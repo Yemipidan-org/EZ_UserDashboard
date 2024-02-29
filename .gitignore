@@ -11,6 +11,7 @@ google-chrome-stable_current_amd64.deb
 
 node_modules
 dist
+build
 dist-ssr
 *.local
 
