@@ -9,9 +9,10 @@ export default defineConfig({
   },
   build: {
     chunkSizeWarningLimit: 50000,
+    outDir: "./build", //Added
   },
   server: {
     host: true,
   },
-  
+  base: "./",
 });
