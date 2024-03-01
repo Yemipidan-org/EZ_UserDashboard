@@ -34,7 +34,7 @@ export default function Wallet() {
   const fetchData = async () => {
     try {
       const response = await fetch(
-        `http://localhost:3000/getWallet/${"guw8xD4HglurQCx48Zob"}`
+        `https://apid.ezhedgefunds.com/getWallet/${"guw8xD4HglurQCx48Zob"}`
       );
       const data = await response.json();
 
