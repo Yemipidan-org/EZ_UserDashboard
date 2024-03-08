@@ -6,6 +6,8 @@ import { Danger1, Danger4 } from "../messagesPopup/messagesFunction";
 import * as Switcherdata from "../../common/switcherdata";
 import Swal from "sweetalert2";
 import Darkmode from "../../components/darkmode/dark";
+import axios from "axios";
+import LoginSession from "../loginSession/loginsession";
 
 export default function Invest() {
   const minimumInvestmentAmount = 500;
@@ -13,6 +15,8 @@ export default function Invest() {
 
   const [investAmount, setInvestAmount] = useState("");
   const [errMsg, setErrorMessage] = useState("");
+  const [userId, setUserId] = useState("");
+
   const apiUrl = "http://localhost:3000"; // Update with your backend server URL
 
   function Warningalert() {
@@ -26,7 +30,6 @@ export default function Invest() {
       confirmButtonText: "Confirm",
     }).then((result) => {
       if (result.isConfirmed) {
-        
         if (errMsg === "An unexpected error occurred.") {
           Danger1("Failed to invest");
         } else {
@@ -55,37 +58,40 @@ export default function Invest() {
   };
 
   const sendInvestment = async () => {
+    LoginSession(setUserId, setUserInfo, null, setWalletData);
     try {
       // Check if the input is a valid number
       if (!isNaN(parseFloat(investAmount)) && isFinite(investAmount)) {
         // Send a POST request to the server to handle the investment
-        const response = await fetch(`${apiUrl}/invest`, {
-          method: "POST",
+        const response = await axios.post(`${apiUrl}/invest`, {
           headers: {
             "Content-Type": "application/json",
           },
+          withCredentials: true,
           body: JSON.stringify({
             userId: "guw8xD4HglurQCx48Zob", // Replace with the actual user ID
             amount: investAmount,
           }),
         });
 
-        // Check if the request was successful
-        if (response.ok) {
-          // Display success message
-          console.log("Investment successful!");
-          // setSuccessMsg("Investment success");
+        console.log(response);
 
-          // Optionally, you can handle additional logic or UI updates here
-        } else {
-          // Handle the case where the server returns an error
-          const errorData = await response.json();
-          // setErrorMessage(errorData.message || "Investment failed");
-          Danger1(); // Trigger Danger1 function
-        }
-      } else {
-        // setErrorMessage("Invalid input. Please enter a valid number.");
-        Danger1(); // Trigger Danger1 function
+        // Check if the request was successful
+        //   if (response.ok) {
+        //     // Display success message
+        //     console.log("Investment successful!");
+        //     // setSuccessMsg("Investment success");
+
+        //     // Optionally, you can handle additional logic or UI updates here
+        //   } else {
+        //     // Handle the case where the server returns an error
+        //     const errorData = await response.json();
+        //     // setErrorMessage(errorData.message || "Investment failed");
+        //     Danger1(); // Trigger Danger1 function
+        //   }
+        // } else {
+        //   // setErrorMessage("Invalid input. Please enter a valid number.");
+        //   Danger1(); // Trigger Danger1 function
       }
     } catch (error) {
       console.error(error);
