@@ -16,6 +16,7 @@ import { ToastContainer } from "react-toastify";
 import { copyAddress, copyBtcAMount, Timer } from "./functions";
 import * as Switcherdata from "../../common/switcherdata";
 import Darkmode from "../darkmode/dark";
+import { MENUITEMS } from "../../common/sidemenu";
 
 export default function AddFund() {
   const [show, setShow] = useState(false);
@@ -23,6 +24,9 @@ export default function AddFund() {
   const [amountInUsd, setAmountInUsd] = useState("", 0);
   const [copiedAddress, setCopiedAddress] = useState(false);
   const [copiedBtcAmount, setcopiedBtcAmount] = useState(false);
+  MENUITEMS[0].Items[3].active = true;
+  MENUITEMS[0].Items[3].selected = true;
+  console.log(MENUITEMS[0].Items[3].active);
 
   const textElement = useRef(null);
   const amountElement = useRef(null);

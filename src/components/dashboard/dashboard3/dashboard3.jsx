@@ -120,21 +120,21 @@ const Dashboard3 = () => {
     // Cleanup: Clear the interval when the component unmounts
     return () => clearInterval(pollingInterval);
   }, []); // The empty dependency array ensures that this effect runs once after the initial render
-function getFirstName(fullName) {
-  // Check if fullName is defined before trying to split
-  if (fullName) {
-    // Split the string at the first occurrence of a whitespace character
-    const parts = fullName.split(/\s+/);
+  function getFirstName(fullName) {
+    // Check if fullName is defined before trying to split
+    if (fullName) {
+      // Split the string at the first occurrence of a whitespace character
+      const parts = fullName.split(/\s+/);
 
-    // Check if there's at least one element (meaning there was a space)
-    if (parts.length > 0) {
-      return parts[0]; // Return the first element (first name)
+      // Check if there's at least one element (meaning there was a space)
+      if (parts.length > 0) {
+        return parts[0]; // Return the first element (first name)
+      }
     }
-  }
 
-  // Handle the case where fullName is undefined or no space in the string
-  return fullName || ""; // Return the entire string if undefined or no space
-}
+    // Handle the case where fullName is undefined or no space in the string
+    return fullName || ""; // Return the entire string if undefined or no space
+  }
   return (
     <Fragment>
       <Pageheader title="DASHBOARD" heading="" active="" />
@@ -148,7 +148,7 @@ function getFirstName(fullName) {
                     <h2 className="text-dark tx-16 font-weight-semibold mb-3 mt-2">
                       Hi, Welcome Back{" "}
                       <span className="text-primary">
-                        {getFirstName(userInfo.name) || "loading"}
+                        {getFirstName(userInfo.name) || "loading..."}
                       </span>
                     </h2>
                     <p className="text-dark tx-12 mb-2 lh-3">
@@ -191,7 +191,7 @@ function getFirstName(fullName) {
                 />
               </div>
               {/* </div> */}
-              <a href={`${import.meta.env.BASE_URL}wallet`}>
+              <a href={`/wallet`}>
                 <div
                   className="btn ripple btn-primary tx-11"
                   id="swal-basic"
@@ -224,7 +224,7 @@ function getFirstName(fullName) {
                   }}
                 />
               </div>
-              <a href={`${import.meta.env.BASE_URL}addfund`}>
+              <a href={`/addfund`}>
                 <div
                   className="btn ripple btn-primary tx-11"
                   id="swal-basic"
@@ -255,7 +255,7 @@ function getFirstName(fullName) {
                   }}
                 />
               </div>
-              <a href={`${import.meta.env.BASE_URL}invest`}>
+              <a href={`/invest`}>
                 <div
                   className="btn ripple btn-success tx-11"
                   id="swal-success"
@@ -286,7 +286,7 @@ function getFirstName(fullName) {
                   }}
                 />
               </div>
-              <a href={`${import.meta.env.BASE_URL}withdraw_fund`}>
+              <a href={`/withdraw_fund`}>
                 <div
                   className="btn ripple btn-success tx-11"
                   id="swal-warning"
