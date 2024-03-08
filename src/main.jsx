@@ -50,13 +50,12 @@ root.render(
       <React.Suspense fallback={<Loader />}>
         <Routes>
           <Route path={`${import.meta.env.BASE_URL}`} element={<Auth />}>
-            <Route index element={<AuthLogin />} />
             <Route
               path={`${import.meta.env.BASE_URL}authentication/login`}
               element={<AuthLogin />}
             />
             <Route
-              path={`${import.meta.env.BASE_URL}authentication/signup`}
+              path={`${import.meta.env.BASE_URL}authentication/signup/`}
               element={<AuthSignup />}
             />
           </Route>
@@ -72,11 +71,11 @@ root.render(
           </Route>
           <Route path={`${import.meta.env.BASE_URL}`} element={<Custompages />}>
             <Route
-              path={`${import.meta.env.BASE_URL}pages/authentication/sigin`}
+              path={`${import.meta.env.BASE_URL}pages/authentication/signin`}
               element={<SignIn />}
             />
             <Route
-              path={`${import.meta.env.BASE_URL}pages/authentication/sigup`}
+              path={`${import.meta.env.BASE_URL}pages/authentication/signup`}
               element={<SignUp />}
             />
             <Route

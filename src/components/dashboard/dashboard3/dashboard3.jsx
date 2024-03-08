@@ -1,6 +1,9 @@
-import React, { Fragment } from "react";
-import { Link } from "react-router-dom";
+import React, { Fragment, useState } from "react";
+// import { Link } from "react-router-dom";
 import { MENUITEMS } from "../../../common/sidemenu";
+import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 import {
   Button,
@@ -25,6 +28,7 @@ import {
 } from "../../../common/tablesfunctionaldata";
 import { Statistics3, Viewers3 } from "../../../common/chartdata";
 import { useEffect } from "react";
+import { data } from "autoprefixer";
 const Dashboard3 = () => {
   const tableInstance = useTable(
     {
@@ -35,7 +39,7 @@ const Dashboard3 = () => {
     useSortBy,
     usePagination
   );
-
+  const [userInfo, setUserInfo] = useState({});
   // console.log(MENUITEMS);
   // const itemToFind = "My Wallet";
   // for (const menuItem of MENUITEMS[0].Items) {
@@ -46,6 +50,7 @@ const Dashboard3 = () => {
   //     break;
   //   }
   // }
+
   const {
     getTableProps, // table props from react-table
     headerGroups, // headerGroups, if your table has groupings
@@ -65,6 +70,71 @@ const Dashboard3 = () => {
   } = tableInstance;
 
   const { globalFilter, pageIndex, pageSize } = state;
+  const navigate = useNavigate();
+  const fetchData = async () => {
+    try {
+      const loginSessionResponse = await axios.get(
+        "http://localhost:3000/login-session",
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        }
+      );
+
+      console.log(loginSessionResponse.data);
+
+      if (loginSessionResponse.data.loggedIn) {
+        const userDataResponse = await axios.get(
+          `http://localhost:3000/get-userData/${loginSessionResponse.data.user}`,
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+            withCredentials: true,
+          }
+        );
+
+        console.log(userDataResponse.data);
+        setUserInfo(userDataResponse.data.user);
+      } else {
+        // Redirect or handle non-logged-in state
+        navigate("/authentication/login/");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData(); // Initial fetch
+
+    const pollingInterval = setInterval(() => {
+      fetchData(); // Fetch data at regular intervals
+
+      // Optional: You can clear the interval if needed
+      // clearInterval(pollingInterval);
+    }, 5000); // Adjust the interval time (in milliseconds) as needed
+
+    // Cleanup: Clear the interval when the component unmounts
+    return () => clearInterval(pollingInterval);
+  }, []); // The empty dependency array ensures that this effect runs once after the initial render
+function getFirstName(fullName) {
+  // Check if fullName is defined before trying to split
+  if (fullName) {
+    // Split the string at the first occurrence of a whitespace character
+    const parts = fullName.split(/\s+/);
+
+    // Check if there's at least one element (meaning there was a space)
+    if (parts.length > 0) {
+      return parts[0]; // Return the first element (first name)
+    }
+  }
+
+  // Handle the case where fullName is undefined or no space in the string
+  return fullName || ""; // Return the entire string if undefined or no space
+}
   return (
     <Fragment>
       <Pageheader title="DASHBOARD" heading="" active="" />
@@ -77,7 +147,9 @@ const Dashboard3 = () => {
                   <div className="text-justified align-items-center">
                     <h2 className="text-dark tx-16 font-weight-semibold mb-3 mt-2">
                       Hi, Welcome Back{" "}
-                      <span className="text-primary">Biodun!</span>
+                      <span className="text-primary">
+                        {getFirstName(userInfo.name) || "loading"}
+                      </span>
                     </h2>
                     <p className="text-dark tx-12 mb-2 lh-3">
                       {" "}

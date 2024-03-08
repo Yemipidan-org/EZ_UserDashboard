@@ -145,7 +145,7 @@ const SignUp = () =>{
                           <div className="main-signup-footer mt-3 text-center">
                             <p>
                               Already have an account?{" "}
-                              <Link to={`${import.meta.env.BASE_URL}pages/Authentication/sigin/`}>Sign In</Link>
+                              <Link to={`${import.meta.env.BASE_URL}pages/authentication/signin/`}>Sign In</Link>
                             </p>
                           </div>
                         </div>
