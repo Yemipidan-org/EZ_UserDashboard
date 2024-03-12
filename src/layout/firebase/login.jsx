@@ -7,8 +7,8 @@ import axios from "axios";
 const SignIn = () => {
   const [err, setError] = useState("");
   const [data, setData] = useState({
-    email: "gyima@gmail.com",
-    password: "1234567890",
+    email: "gyimahemwurld@gmail.com",
+    password: "12",
   });
   const baseUrl = "http://localhost:5173";
   const dashboardPath = "/dashboard/dashboard3/";

@@ -41,6 +41,7 @@ const Dashboard3 = () => {
     usePagination
   );
   const [userInfo, setUserInfo] = useState({});
+  const [userId, setUserId] = useState("");
   const navigate = useNavigate();
   // console.log(MENUITEMS);
   // const itemToFind = "My Wallet";
@@ -74,10 +75,9 @@ const Dashboard3 = () => {
   const { globalFilter, pageIndex, pageSize } = state;
 
   useEffect(() => {
-    LoginSession(setUserId, setUserInfo, navigate); // Initial fetch
-
+    LoginSession(undefined, setUserInfo, navigate, undefined); // Initial fetch
     const pollingInterval = setInterval(() => {
-      LoginSession(setUserId, setUserInfo, navigate); // Fetch data at regular intervals
+      LoginSession(undefined, setUserInfo, navigate, undefined); // Fetch data at regular intervals
 
       // Optional: You can clear the interval if needed
       // clearInterval(pollingInterval);

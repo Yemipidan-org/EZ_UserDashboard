@@ -1,10 +1,10 @@
 import axios from "axios";
 
 export default async function LoginSession(
-  setUserId,
-  setUserInfo,
+  setUserId = () => {},
+  setUserInfo = () => {},
   navigate,
-  setWalletData
+  setWalletData = () => {}
 ) {
   try {
     const loginSessionResponse = await axios.get(
@@ -34,7 +34,23 @@ export default async function LoginSession(
       // console.log(userDataResponse.data);
       setUserInfo(userDataResponse.data.user);
       setWalletData(userDataResponse.data.wallet);
-      // console.log(userDataResponse.data.wallet);
+
+      console.log(userDataResponse.data.wallet);
+      const investments = await axios.get(
+        `http://localhost:3000/get-investments/${loginSessionResponse.data.user}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        }
+      );
+
+      console.log(investments);
+      // setUserInfo(userDataResponse.data.user);
+      // setWalletData(userDataResponse.data.wallet);
+
+      console.log(userDataResponse.data.wallet);
     } else {
       // Redirect or handle non-logged-in state
       navigate("/authentication/login/");

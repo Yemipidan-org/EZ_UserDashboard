@@ -8,14 +8,16 @@ import Swal from "sweetalert2";
 import Darkmode from "../../components/darkmode/dark";
 import axios from "axios";
 import LoginSession from "../loginSession/loginsession";
+import { useNavigate } from "react-router-dom";
 
 export default function Invest() {
-  const minimumInvestmentAmount = 500;
+  const minimumInvestmentAmount = 10;
   const walletBalance = 600;
 
   const [investAmount, setInvestAmount] = useState("");
   const [errMsg, setErrorMessage] = useState("");
   const [userId, setUserId] = useState("");
+  const navigate = useNavigate();
 
   const apiUrl = "http://localhost:3000"; // Update with your backend server URL
 
@@ -57,45 +59,80 @@ export default function Invest() {
     }
   };
 
+  useEffect(() => {
+    LoginSession(setUserId, undefined, navigate, undefined); // Initial fetch
+    const pollingInterval = setInterval(() => {
+      LoginSession(setUserId, undefined, navigate, undefined); // Fetch data at regular intervals
+
+      // Optional: You can clear the interval if needed
+      // clearInterval(pollingInterval);
+    }, 5000); // Adjust the interval time (in milliseconds) as needed
+
+    // Cleanup: Clear the interval when the component unmounts
+    return () => clearInterval(pollingInterval);
+  }, []);
   const sendInvestment = async () => {
-    LoginSession(setUserId, setUserInfo, null, setWalletData);
     try {
       // Check if the input is a valid number
       if (!isNaN(parseFloat(investAmount)) && isFinite(investAmount)) {
         // Send a POST request to the server to handle the investment
-        const response = await axios.post(`${apiUrl}/invest`, {
-          headers: {
-            "Content-Type": "application/json",
+        const response = await axios.post(
+          `${apiUrl}/invest`,
+          {
+            userId: userId, // Replace with the actual user ID
+            amount: parseInt(investAmount),
           },
-          withCredentials: true,
-          body: JSON.stringify({
-            userId: "guw8xD4HglurQCx48Zob", // Replace with the actual user ID
-            amount: investAmount,
-          }),
-        });
-
-        console.log(response);
+          {
+            withCredentials: true,
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
 
         // Check if the request was successful
-        //   if (response.ok) {
-        //     // Display success message
-        //     console.log("Investment successful!");
-        //     // setSuccessMsg("Investment success");
+        if (response.status === 200) {
+          // Display success message
+          console.log("Investment successful!");
+          console.log(response.data); // Log the response data if needed
+          // Optionally, you can handle additional logic or UI updates here
+        } else {
+          // Handle the case where the server returns an error
+          console.error(
+            "Investment failed. Server returned an error:",
+            response.status
+          );
 
-        //     // Optionally, you can handle additional logic or UI updates here
-        //   } else {
-        //     // Handle the case where the server returns an error
-        //     const errorData = await response.json();
-        //     // setErrorMessage(errorData.message || "Investment failed");
-        //     Danger1(); // Trigger Danger1 function
-        //   }
-        // } else {
-        //   // setErrorMessage("Invalid input. Please enter a valid number.");
-        //   Danger1(); // Trigger Danger1 function
+          // Log the JSON error response
+          console.error("Error details:", response.data);
+
+          // You can log additional error details as needed
+          // setErrorMessage(response.data.message || "Investment failed");
+          // Danger1(); // Trigger Danger1 function
+        }
+      } else {
+        // setErrorMessage("Invalid input. Please enter a valid number.");
+        // Danger1(); // Trigger Danger1 function
       }
     } catch (error) {
-      console.error(error);
-      setErrorMessage("An unexpected error occurred.");
+      console.error("An unexpected error occurred:", error);
+
+      // Handle different types of errors here and log as needed
+      if (error.response) {
+        // The request was made and the server responded with a status code
+        console.error("Response status:", error.response.status);
+        console.error("Response data:", error.response.data);
+        Danger1(error.response.data); // Trigger Danger1 function
+        setErrorMessage("An unexpected error occurred.");
+      } else if (error.request) {
+        // The request was made but no response was received
+        console.error("No response received. Request:", error.request);
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        console.error("Error message:", error.message);
+      }
+
+      // setErrorMessage("An unexpected error occurred.");
       // Danger1("An unexpected error occurred."); // Trigger Danger1 function
     }
   };

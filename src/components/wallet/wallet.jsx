@@ -6,7 +6,7 @@ import {
   usePagination,
 } from "react-table";
 import { Col, Row, Card, ListGroup, Tab, Tabs, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import * as chart from "../../common/chartdata";
 import Pageheader from "../../layout/layoutcomponent/pageheader";
 import { COLUMNS1, DATATABLE2 } from "../../common/tablesfunctionaldata";
@@ -17,34 +17,7 @@ import LoginSession, { GetFirstName } from "../loginSession/loginsession";
 
 export default function Wallet() {
   const [walletData, setWalletData] = useState({});
-
-  // useEffect(() => {
-  //   // Initial fetch
-  //   fetchData();
-
-  //   // Polling interval (every 5 seconds in this example)
-  //   const pollingInterval = setInterval(() => {
-  //     fetchData();
-  //   }, 1000);
-
-  //   // Cleanup interval on component unmount
-  //   return () => clearInterval(pollingInterval);
-  // }, []);
-
-  // const fetchData = async () => {
-  //   try {
-  //     const response = await fetch(
-  //       `https://apid.ezhedgefunds.com/getWallet/${"guw8xD4HglurQCx48Zob"}`
-  //     );
-  //     const data = await response.json();
-
-  //     // Now 'data' contains the fetched data
-  //     // console.log("Fetched data:", data);
-  //     setWalletData(data);
-  //   } catch (error) {
-  //     console.error("Error fetching wallet data:", error);
-  //   }
-  // };
+  const navigate = useNavigate();
 
   const tableInstance = useTable(
     {
@@ -66,15 +39,15 @@ export default function Wallet() {
     // Call Darkmode function to set the default theme to dark
     Darkmode();
   }, []);
-  
+
   const [userInfo, setUserInfo] = useState({});
 
   // LoginSession(setUserId);
   useEffect(() => {
-    LoginSession(null, setUserInfo, null, setWalletData);
+    LoginSession(undefined, setUserInfo, navigate, setWalletData);
 
     const pollingInterval = setInterval(() => {
-      LoginSession(null, setUserInfo, null, setWalletData); // Fetch data at regular intervals
+      LoginSession(undefined, setUserInfo, navigate, setWalletData); // Fetch data at regular intervals
 
       // Optional: You can clear the interval if needed
       // clearInterval(pollingInterval);
@@ -83,7 +56,6 @@ export default function Wallet() {
     // Cleanup: Clear the interval when the component unmounts
     return () => clearInterval(pollingInterval);
   }, []);
-
 
   // console.log(walletData);
 
@@ -157,7 +129,115 @@ export default function Wallet() {
         </Col>
         {/* investment_in_progress: */}
         {walletData.investment_in_progress ? (
-          <p>yes</p>
+          <>
+            <Col xs={12} lg={3} xl={3} md={12}>
+              <Card
+                className="sales-card circle-image2"
+                style={{ height: "9em" }}
+              >
+                <Row>
+                  <div className="col-8">
+                    <div className="ps-4 pt-4 pe-3 pb-4">
+                      <div className="">
+                        <h6 className="mb-2 tx-12">Amount Invested @ 8%</h6>
+                      </div>
+                      <div className="pb-0 mt-0">
+                        <div className="d-flex">
+                          <h4 className="tx-20 font-weight-semibold mt-3">
+                            $033
+                          </h4>
+                        </div>
+                        {/* <p className="mb-0 tx-12 text-muted">
+                      Last week
+                      <i className="fa fa-caret-down mx-2 text-danger"></i>
+                      <span className="font-weight-semibold text-danger">
+                        {" "}
+                        -453
+                      </span>
+                    </p> */}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-4">
+                    <div className="circle-icon bg-info-transparent text-center align-self-center overflow-hidden">
+                      <i className="fe fe-dollar-sign tx-16 text-info"></i>
+                    </div>
+                  </div>
+                </Row>
+              </Card>
+            </Col>
+            <Col xs={12} lg={3} xl={3} md={12}>
+              <Card
+                className="sales-card circle-image3"
+                style={{ height: "9em" }}
+              >
+                <Row>
+                  <div className="col-8">
+                    <div className="ps-4 pt-4 pe-3 pb-4">
+                      <div className="">
+                        <h6 className="mb-2 tx-12">Expected Amount</h6>
+                      </div>
+                      <div className="pb-0">
+                        <div className="d-flex">
+                          <h4 className="tx-20 font-weight-semibold mt-3">
+                            $0
+                          </h4>
+                        </div>
+                        {/* <p className="mb-0 tx-12 text-muted">
+                      Last week
+                      <i className="fa fa-caret-up mx-2 text-success"></i>
+                      <span className=" text-success font-weight-semibold">
+                        {" "}
+                        +788
+                      </span>
+                    </p> */}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-4">
+                    <div className="circle-icon bg-secondary-transparent text-center align-self-center overflow-hidden">
+                      <i className="fe fe-external-link tx-16 text-secondary"></i>
+                    </div>
+                  </div>
+                </Row>
+              </Card>
+            </Col>
+            <Col xs={12} lg={3} xl={3} md={12}>
+              <Card
+                className="sales-card circle-image4"
+                style={{ height: "9em" }}
+              >
+                <Row>
+                  <div className="col-8">
+                    <div className="ps-4 pt-4 pe-3 pb-4">
+                      <div className="">
+                        <h6 className="mb-2 tx-12">R.O.I as at today</h6>
+                      </div>
+                      <div className="pb-0 mt-0">
+                        <div className="d-flex">
+                          <h4 className="tx-22 font-weight-semibold mt-3">
+                            $0
+                          </h4>
+                        </div>
+                        <p className="mb-0 tx-12  text-muted">
+                          {/* <i className="fa fa-caret-down mx-2 text-danger"></i> */}
+                          {/* <span className="text-danger font-weight-semibold">
+                        {" "}
+                        -693
+                      </span> */}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-4">
+                    <div className="circle-icon bg-warning-transparent text-center align-self-center overflow-hidden">
+                      <i className="fe fe-credit-card tx-16 text-warning"></i>
+                    </div>
+                  </div>
+                </Row>
+              </Card>
+            </Col>
+          </>
         ) : (
           <>
             <Col xs={12} lg={3} xl={3} md={12}>
