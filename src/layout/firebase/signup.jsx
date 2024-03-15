@@ -3,10 +3,13 @@ import { Link, useNavigate } from "react-router-dom";
 // import { auth } from "./firebase";
 import { Button, Col, Form, FormGroup, Row, Alert } from "react-bootstrap";
 import axios from "axios";
+import axiosInstance from "../../axiosConfig/axiosConfig";
+import LoadingSpinner from "./loader";
 // import { imagesData } from "../../common/commonimages";
 const SignUp = () => {
   const [err, setError] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
+  const [loading, setLoading] = useState("");
   const [data, setData] = React.useState({
     fullname: "",
     email: "",
@@ -35,9 +38,9 @@ const SignUp = () => {
         setError("");
       }, 3000);
     } else {
-      const sendMessageEndpoint = "http://localhost:3000/send-message";
-      axios
-        .post(sendMessageEndpoint, data, {
+      setLoading(true);
+      axiosInstance
+        .post("/send-message", data, {
           withCredentials: true,
           headers: {
             "Content-Type": "application/json",
@@ -47,10 +50,15 @@ const SignUp = () => {
           console.log("Message sent to the server successfully");
           console.log(response.data); // Display a message (you can customize this)
           setSuccessMsg(response.data.message);
+          setLoading(false);
+          setTimeout(() => {
+            setSuccessMsg("");
+          }, 3000);
           // navigate("/dashboard/dashboard3");
         })
         .catch((error) => {
           try {
+            setLoading(false);
             const erroData = error.response;
             console.log(erroData);
             setError(erroData.data.message);
@@ -60,6 +68,9 @@ const SignUp = () => {
             console.error("Error:", error);
           } catch (error) {
             setError("Failed to send message to the server");
+            setTimeout(() => {
+              setError("");
+            }, 3000);
           }
         });
     }
@@ -72,6 +83,8 @@ const SignUp = () => {
   };
   return (
     <div>
+      {" "}
+      <LoadingSpinner loading={loading} />
       <div className="page bg-primary">
         <div className="page-single">
           <div className="container">

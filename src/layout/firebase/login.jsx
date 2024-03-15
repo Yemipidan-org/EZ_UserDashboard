@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Col, Form, Row, Alert, Tab, Nav, Card } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 
-import axios from "axios";
+import axiosInstance from "../../axiosConfig/axiosConfig";
 
 const SignIn = () => {
   const [err, setError] = useState("");
@@ -10,9 +10,8 @@ const SignIn = () => {
     email: "gyimahemwurld@gmail.com",
     password: "12",
   });
-  const baseUrl = "http://localhost:5173";
-  const dashboardPath = "/dashboard/dashboard3/";
-  const targetUrl = new URL(dashboardPath, baseUrl).toString();
+
+
 
   const navigate = useNavigate();
 
@@ -26,8 +25,8 @@ const SignIn = () => {
     if (isEmpty) {
       setError("Please Fill input");
     } else {
-      axios
-        .post("http://localhost:3000/login", data, {
+      axiosInstance
+        .post("/login", data, {
           withCredentials: true,
           headers: {
             "Content-Type": "application/json",
@@ -254,7 +253,6 @@ const SignIn = () => {
                                             </div>
                                             <Link
                                               to="http://127.0.0.1:3000/auth/google"
-                                              
                                               className="btn btn-icon btn-facebook me-3"
                                               type="button"
                                             >

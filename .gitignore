@@ -14,7 +14,7 @@ dist
 build
 dist-ssr
 *.local
-buildd.zip
+build.zip
 buildworkin.zip
 
 # Editor directories and files

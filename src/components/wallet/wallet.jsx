@@ -17,6 +17,7 @@ import LoginSession, { GetFirstName } from "../loginSession/loginsession";
 
 export default function Wallet() {
   const [walletData, setWalletData] = useState({});
+  const [investments, setInvestments] = useState({});
   const navigate = useNavigate();
 
   const tableInstance = useTable(
@@ -44,10 +45,22 @@ export default function Wallet() {
 
   // LoginSession(setUserId);
   useEffect(() => {
-    LoginSession(undefined, setUserInfo, navigate, setWalletData);
+    LoginSession(
+      undefined,
+      setUserInfo,
+      navigate,
+      setWalletData,
+      setInvestments
+    );
 
     const pollingInterval = setInterval(() => {
-      LoginSession(undefined, setUserInfo, navigate, setWalletData); // Fetch data at regular intervals
+      LoginSession(
+        undefined,
+        setUserInfo,
+        navigate,
+        setWalletData,
+        setInvestments
+      ); // Fetch data at regular intervals
 
       // Optional: You can clear the interval if needed
       // clearInterval(pollingInterval);
@@ -57,7 +70,7 @@ export default function Wallet() {
     return () => clearInterval(pollingInterval);
   }, []);
 
-  // console.log(walletData);
+  console.log(investments);
 
   return (
     <Fragment>
@@ -144,7 +157,7 @@ export default function Wallet() {
                       <div className="pb-0 mt-0">
                         <div className="d-flex">
                           <h4 className="tx-20 font-weight-semibold mt-3">
-                            $033
+                            ${investments?.amount || "..."}
                           </h4>
                         </div>
                         {/* <p className="mb-0 tx-12 text-muted">
@@ -180,7 +193,7 @@ export default function Wallet() {
                       <div className="pb-0">
                         <div className="d-flex">
                           <h4 className="tx-20 font-weight-semibold mt-3">
-                            $0
+                            ${investments?.amount_in_return || "..."}
                           </h4>
                         </div>
                         {/* <p className="mb-0 tx-12 text-muted">
@@ -216,7 +229,7 @@ export default function Wallet() {
                       <div className="pb-0 mt-0">
                         <div className="d-flex">
                           <h4 className="tx-22 font-weight-semibold mt-3">
-                            $0
+                            ${investments?.roi}
                           </h4>
                         </div>
                         <p className="mb-0 tx-12  text-muted">

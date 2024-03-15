@@ -9,6 +9,7 @@ import Darkmode from "../../components/darkmode/dark";
 import axios from "axios";
 import LoginSession from "../loginSession/loginsession";
 import { useNavigate } from "react-router-dom";
+import axiosInstance from "../../axiosConfig/axiosConfig";
 
 export default function Invest() {
   const minimumInvestmentAmount = 10;
@@ -19,7 +20,7 @@ export default function Invest() {
   const [userId, setUserId] = useState("");
   const navigate = useNavigate();
 
-  const apiUrl = "http://localhost:3000"; // Update with your backend server URL
+
 
   function Warningalert() {
     Swal.fire({
@@ -76,8 +77,8 @@ export default function Invest() {
       // Check if the input is a valid number
       if (!isNaN(parseFloat(investAmount)) && isFinite(investAmount)) {
         // Send a POST request to the server to handle the investment
-        const response = await axios.post(
-          `${apiUrl}/invest`,
+        const response = await axiosInstance.post(
+          `/invest`,
           {
             userId: userId, // Replace with the actual user ID
             amount: parseInt(investAmount),
@@ -95,6 +96,8 @@ export default function Invest() {
           // Display success message
           console.log("Investment successful!");
           console.log(response.data); // Log the response data if needed
+          // setErrorMessage(response.data.message || "Investment failed");
+
           // Optionally, you can handle additional logic or UI updates here
         } else {
           // Handle the case where the server returns an error
@@ -122,7 +125,7 @@ export default function Invest() {
         // The request was made and the server responded with a status code
         console.error("Response status:", error.response.status);
         console.error("Response data:", error.response.data);
-        Danger1(error.response.data); // Trigger Danger1 function
+        Danger1(error.response.data.message); // Trigger Danger1 function
         setErrorMessage("An unexpected error occurred.");
       } else if (error.request) {
         // The request was made but no response was received

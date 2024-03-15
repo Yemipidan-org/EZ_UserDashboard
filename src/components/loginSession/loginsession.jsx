@@ -1,28 +1,27 @@
 import axios from "axios";
+import axiosInstance from "../../axiosConfig/axiosConfig";
 
 export default async function LoginSession(
   setUserId = () => {},
   setUserInfo = () => {},
   navigate,
-  setWalletData = () => {}
+  setWalletData = () => {},
+  setInvestments = () => {}
 ) {
   try {
-    const loginSessionResponse = await axios.get(
-      "http://localhost:3000/login-session",
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
-        withCredentials: true,
-      }
-    );
+    const loginSessionResponse = await axiosInstance.get("/login-session", {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      withCredentials: true,
+    });
 
     // console.log(loginSessionResponse.data);
     setUserId(loginSessionResponse.data.user);
 
     if (loginSessionResponse.data.loggedIn) {
-      const userDataResponse = await axios.get(
-        `http://localhost:3000/get-userData/${loginSessionResponse.data.user}`,
+      const userDataResponse = await axiosInstance.get(
+        `/get-userData/${loginSessionResponse.data.user}`,
         {
           headers: {
             "Content-Type": "application/json",
@@ -35,9 +34,9 @@ export default async function LoginSession(
       setUserInfo(userDataResponse.data.user);
       setWalletData(userDataResponse.data.wallet);
 
-      console.log(userDataResponse.data.wallet);
-      const investments = await axios.get(
-        `http://localhost:3000/get-investments/${loginSessionResponse.data.user}`,
+      // console.log(userDataResponse.data.wallet);
+      const investments = await axiosInstance.get(
+        `/get-investments/${loginSessionResponse.data.user}`,
         {
           headers: {
             "Content-Type": "application/json",
@@ -46,11 +45,12 @@ export default async function LoginSession(
         }
       );
 
-      console.log(investments);
+      console.log("this is", investments.data.investments);
+      setInvestments(investments.data.investments);
       // setUserInfo(userDataResponse.data.user);
       // setWalletData(userDataResponse.data.wallet);
 
-      console.log(userDataResponse.data.wallet);
+      // console.log(userDataResponse.data.wallet);
     } else {
       // Redirect or handle non-logged-in state
       navigate("/authentication/login/");
