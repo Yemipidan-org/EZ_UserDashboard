@@ -34,7 +34,7 @@ const SignIn = () => {
         })
         .then((response) => {
           console.log(response.data); // Display a message (you can customize this)
-          navigate("/dashboard/dashboard3");
+          navigate("/dashboard");
         })
         .catch((error) => {
           const erroData = error.response;

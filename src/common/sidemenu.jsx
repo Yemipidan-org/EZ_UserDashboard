@@ -18,7 +18,7 @@ export const MENUITEMS = [
         type: "link",
         selected: false,
         active: false,
-        path: `${import.meta.env.BASE_URL}dashboard/dashboard3`,
+        path: `${import.meta.env.BASE_URL}dashboard`,
       },
       {
         title: "My Wallet",

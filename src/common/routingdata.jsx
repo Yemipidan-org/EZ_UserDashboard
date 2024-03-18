@@ -123,7 +123,7 @@ export const Routingdata = [
   //   element: <Dashboard2 />,
   // },
   {
-    path: `${import.meta.env.BASE_URL}dashboard/dashboard3`,
+    path: `${import.meta.env.BASE_URL}dashboard`,
     element: <Dashboard3 />,
   },
   {
@@ -132,7 +132,7 @@ export const Routingdata = [
   },
   {
     path: `${import.meta.env.BASE_URL}invest`,
-    element: <Invest/>,
+    element: <Invest />,
   },
   {
     path: `${import.meta.env.BASE_URL}addFund`,

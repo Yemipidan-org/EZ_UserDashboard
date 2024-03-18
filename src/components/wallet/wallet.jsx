@@ -70,7 +70,7 @@ export default function Wallet() {
     return () => clearInterval(pollingInterval);
   }, []);
 
-  console.log(investments);
+  console.log(investments[0]);
 
   return (
     <Fragment>
@@ -152,12 +152,12 @@ export default function Wallet() {
                   <div className="col-8">
                     <div className="ps-4 pt-4 pe-3 pb-4">
                       <div className="">
-                        <h6 className="mb-2 tx-12">Amount Invested @ 8%</h6>
+                        <h6 className="mb-2 tx-12">Amount Invested @ 8%</h6> 
                       </div>
                       <div className="pb-0 mt-0">
                         <div className="d-flex">
                           <h4 className="tx-20 font-weight-semibold mt-3">
-                            ${investments?.amount || "..."}
+                            ${investments[0]?.amount || "..."}
                           </h4>
                         </div>
                         {/* <p className="mb-0 tx-12 text-muted">
@@ -193,7 +193,7 @@ export default function Wallet() {
                       <div className="pb-0">
                         <div className="d-flex">
                           <h4 className="tx-20 font-weight-semibold mt-3">
-                            ${investments?.amount_in_return || "..."}
+                            ${investments[0]?.amount_in_return || "..."}
                           </h4>
                         </div>
                         {/* <p className="mb-0 tx-12 text-muted">
@@ -229,7 +229,7 @@ export default function Wallet() {
                       <div className="pb-0 mt-0">
                         <div className="d-flex">
                           <h4 className="tx-22 font-weight-semibold mt-3">
-                            ${investments?.roi}
+                            ${investments[0]?.roi}
                           </h4>
                         </div>
                         <p className="mb-0 tx-12  text-muted">

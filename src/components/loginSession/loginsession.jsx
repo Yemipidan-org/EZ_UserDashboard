@@ -29,12 +29,8 @@ export default async function LoginSession(
           withCredentials: true,
         }
       );
-
-      // console.log(userDataResponse.data);
       setUserInfo(userDataResponse.data.user);
       setWalletData(userDataResponse.data.wallet);
-
-      // console.log(userDataResponse.data.wallet);
       const investments = await axiosInstance.get(
         `/get-investments/${loginSessionResponse.data.user}`,
         {
@@ -45,12 +41,8 @@ export default async function LoginSession(
         }
       );
 
-      console.log("this is", investments.data.investments);
+      // console.log("this is", investments.data.investments);
       setInvestments(investments.data.investments);
-      // setUserInfo(userDataResponse.data.user);
-      // setWalletData(userDataResponse.data.wallet);
-
-      // console.log(userDataResponse.data.wallet);
     } else {
       // Redirect or handle non-logged-in state
       navigate("/authentication/login/");
@@ -59,6 +51,7 @@ export default async function LoginSession(
     console.error("Error:", error);
   }
 }
+
 
 export const GetFirstName = (fullName) => {
   // Check if fullName is defined before trying to split

@@ -16,35 +16,32 @@ export default function Invest() {
   const walletBalance = 600;
 
   const [investAmount, setInvestAmount] = useState("");
-  const [errMsg, setErrorMessage] = useState("");
+  const [errMsg, setErrorMessage] = useState();
   const [userId, setUserId] = useState("");
   const navigate = useNavigate();
 
-
-
   function Warningalert() {
-    Swal.fire({
-      title: `Confirm $${investAmount} investment`,
-      text: "You won't be able to revert this!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Confirm",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        if (errMsg === "An unexpected error occurred.") {
-          Danger1("Failed to invest");
-        } else {
+    if (!errMsg) {
+      Swal.fire({
+        title: `Confirm $${investAmount} investment`,
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Confirm",
+      }).then((result) => {
+        // if (errMsg) {
+        if (result.isConfirmed) {
           Swal.fire(
             "Confirmed!",
             "Investment has been successfully deducted from your wallet.",
             "success"
           );
-          sendInvestment();
         }
-      }
-    });
+      });
+    }
+    sendInvestment();
   }
 
   const handleInvest = () => {
@@ -52,8 +49,6 @@ export default function Invest() {
       Danger1("Please enter amount");
     } else if (investAmount < minimumInvestmentAmount) {
       Danger1("The minimum amount you can invest is $500");
-    } else if (walletBalance < minimumInvestmentAmount) {
-      Danger1("Insufficient money in wallet");
     } else {
       // Danger4("Investment successful");
       Warningalert();
@@ -125,8 +120,8 @@ export default function Invest() {
         // The request was made and the server responded with a status code
         console.error("Response status:", error.response.status);
         console.error("Response data:", error.response.data);
+        setErrorMessage(true);
         Danger1(error.response.data.message); // Trigger Danger1 function
-        setErrorMessage("An unexpected error occurred.");
       } else if (error.request) {
         // The request was made but no response was received
         console.error("No response received. Request:", error.request);
