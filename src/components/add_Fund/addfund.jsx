@@ -8,7 +8,7 @@ import {
   Row,
   Accordion,
 } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Middle } from "../../common/countersdata";
 import Pageheader from "../../layout/layoutcomponent/pageheader";
 import { Danger1, Danger4 } from "../messagesPopup/messagesFunction";
@@ -16,21 +16,25 @@ import { ToastContainer } from "react-toastify";
 import { copyAddress, copyBtcAMount, Timer } from "./functions";
 import * as Switcherdata from "../../common/switcherdata";
 import Darkmode from "../darkmode/dark";
-
+import axiosInstance from "../../axiosConfig/axiosConfig";
+import LoginSession from "../loginSession/loginsession";
 
 export default function AddFund() {
   const [show, setShow] = useState(false);
+  const [userId, setUserId] = useState("");
   const [btcamount, setBTCAmount] = useState("");
   const [amountInUsd, setAmountInUsd] = useState("", 0);
   const [copiedAddress, setCopiedAddress] = useState(false);
   const [copiedBtcAmount, setcopiedBtcAmount] = useState(false);
+  const navigate = useNavigate();
+
 
 
   const textElement = useRef(null);
   const amountElement = useRef(null);
 
   const walletBalance = 4000;
-  const minDepositAmount = 500;
+  // const minDepositAmount = 0;
 
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
@@ -40,15 +44,46 @@ export default function AddFund() {
     if (!amountInUsd) {
       // Check for empty input
       Danger1("Amount is required!");
-      return; // Exit the function to prevent further actions
-    } else if (amountInUsd < minDepositAmount) {
-      Danger1("minimum you can deposit is $500");
-    } else {
+      // return; // Exit the function to prevent further actions
+    }
+    // else if (amountInUsd < minDepositAmount) {
+    //   Danger1("minimum you can deposit is $500");
+    // }
+    else {
       handleShow();
     }
   };
 
+
+  
+  useEffect(() => {
+    LoginSession(setUserId, undefined, navigate, undefined); // Initial fetch
+    const pollingInterval = setInterval(() => {
+      LoginSession(setUserId, undefined, navigate, undefined); // Fetch data at regular intervals
+
+      // Optional: You can clear the interval if needed
+      // clearInterval(pollingInterval);
+    }, 5000); // Adjust the interval time (in milliseconds) as needed
+
+    // Cleanup: Clear the interval when the component unmounts
+    return () => clearInterval(pollingInterval);
+  }, []);
+
   const handleHavePaid = () => {
+    axiosInstance.post(
+      "/add-funds",
+      {
+        btcamount,
+        userId
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+
+        withCredentials: true,
+      }
+    );
     console.log("Mr bayo just sent this amount of BTC to you ", btcamount);
     handleClose();
     Timer();
@@ -128,7 +163,7 @@ export default function AddFund() {
                           </Form>
                           <div className="">
                             <>
-                              <Modal show={show} onHide={handleClose}>
+                              <Modal show={show}>
                                 <Modal.Body className="modal-body pd-sm-40">
                                   <Button
                                     onClick={handleClose}
