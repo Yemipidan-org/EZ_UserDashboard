@@ -7,7 +7,8 @@ export default async function LoginSession(
   navigate,
   setWalletData = () => {},
   setInvestments = () => {},
-  setDepositsData = () => {}
+  setDepositsData = () => {},
+  setAllInvestments = () => {}
 ) {
   try {
     const loginSessionResponse = await axiosInstance.get("/login-session", {
@@ -42,9 +43,10 @@ export default async function LoginSession(
         }
       );
 
-      fetchData(setDepositsData);
+      fetchData(setDepositsData, loginSessionResponse.data.user);
       // console.log("this is", investments.data.investments);
       setInvestments(investments.data.investments);
+      setAllInvestments(investments.data.history);
     } else {
       // Redirect or handle non-logged-in state
       navigate("/authentication/login/");
@@ -54,13 +56,16 @@ export default async function LoginSession(
   }
 }
 
-const fetchData = async (setDepositsData) => {
+const fetchData = async (setDepositsData, walletId) => {
   try {
-    const getAllAddedFunds = await axiosInstance.get("/get-deposits", {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const getAllAddedFunds = await axiosInstance.get(
+      `/get-deposits/${walletId}`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     // console.log("mod", modifiedFunds);
     // console.log(getAllAddedFunds);
