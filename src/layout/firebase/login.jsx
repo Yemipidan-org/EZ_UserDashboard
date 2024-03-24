@@ -3,6 +3,8 @@ import { Button, Col, Form, Row, Alert, Tab, Nav, Card } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 
 import axiosInstance from "../../axiosConfig/axiosConfig";
+import Darkmode from "../../components/darkmode/dark";
+import * as Switcherdata from "../../common/switcherdata";
 
 const SignIn = () => {
   const [err, setError] = useState("");
@@ -10,8 +12,6 @@ const SignIn = () => {
     email: "gyimahemwurld@gmail.com",
     password: "12",
   });
-
-
 
   const navigate = useNavigate();
 
@@ -44,10 +44,17 @@ const SignIn = () => {
         });
     }
   };
+  // useEffect(() => {
+  //   Switcherdata.localStorageBackUp(); // Assuming you want to execute this function as well
+
+  //   // Call Darkmode function to set the default theme to dark
+  //   Darkmode();
+  // }, []);
   return (
     <React.Fragment>
       <div className="square-box"> </div>
-      <div className="page bg-primary">
+
+      <div className="page bg-primar" style={{ background: "#000" }}>
         <div className="page-single">
           <div className="container" style={{ marginTop: "89px" }}>
             <Row>

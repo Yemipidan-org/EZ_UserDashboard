@@ -3,26 +3,41 @@ export const LtrtoRtl = () => {
   document.querySelector(".app")?.classList.add("rtl");
   document.querySelector(".error-page1")?.classList.add("rtl");
   document.querySelector("html[lang=en]")?.setAttribute("dir", "rtl");
-  document.getElementById("bootstrapLink")?.setAttribute("href", `${import.meta.env.BASE_URL === 'production' ? "/" : "https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.rtl.min.css"}`);
+  document
+    .getElementById("bootstrapLink")
+    ?.setAttribute(
+      "href",
+      `${
+        import.meta.env.BASE_URL === "production"
+          ? "/"
+          : "https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.rtl.min.css"
+      }`
+    );
   document.querySelector(".app")?.classList.remove("ltr");
   document.querySelector(".error-page1")?.classList.remove("ltr");
-  document.getElementById('myonoffswitch55').checked = true;
+  document.getElementById("myonoffswitch55").checked = true;
   localStorage.setItem("nowartl", true);
   localStorage.removeItem("nowaltr");
-
 };
 export const RtltoLtr = () => {
   document.querySelector(".app")?.classList.add("ltr");
   document.querySelector(".error-page1")?.classList.add("ltr");
   document.querySelector("html[lang=en]")?.setAttribute("dir", "ltr");
-  document.getElementById("bootstrapLink")?.setAttribute("href", `${import.meta.env.BASE_URL === 'production' ? "/" : "https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"}`);
+  document
+    .getElementById("bootstrapLink")
+    ?.setAttribute(
+      "href",
+      `${
+        import.meta.env.BASE_URL === "production"
+          ? "/"
+          : "https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      }`
+    );
   document.querySelector(".app")?.classList.remove("rtl");
   document.querySelector(".error-page1")?.classList.remove("rtl");
-  document.getElementById('myonoffswitch54').checked = true;
+  document.getElementById("myonoffswitch54").checked = true;
   localStorage.setItem("nowaltr", true);
   localStorage.removeItem("nowartl");
-
-
 };
 // Header
 export const Lightheader = () => {
@@ -30,44 +45,44 @@ export const Lightheader = () => {
   document.querySelector(".app").classList.remove("gradient-header");
   document.querySelector(".app").classList.remove("dark-header");
   document.querySelector(".app").classList.add("light-header");
- document.getElementById('myonoffswitch6').checked=true;
-  localStorage.setItem('nowalightheader', 'true');
-  localStorage.removeItem('nowacolorheader');
-  localStorage.removeItem('nowadarkheader');
-  localStorage.removeItem('nowagradientheader');
+  document.getElementById("myonoffswitch6").checked = true;
+  localStorage.setItem("nowalightheader", "true");
+  localStorage.removeItem("nowacolorheader");
+  localStorage.removeItem("nowadarkheader");
+  localStorage.removeItem("nowagradientheader");
 };
 export const Colorheader = () => {
   document.querySelector(".app").classList.remove("gradient-header");
   document.querySelector(".app").classList.remove("dark-header");
   document.querySelector(".app").classList.remove("light-header");
   document.querySelector(".app").classList.add("color-header");
-  document.getElementById('myonoffswitch7').checked=true;
-  localStorage.setItem('nowacolorheader', 'true');
-  localStorage.removeItem('nowadarkheader');
-  localStorage.removeItem('nowagradientheader');
-  localStorage.removeItem('nowalightheader');
+  document.getElementById("myonoffswitch7").checked = true;
+  localStorage.setItem("nowacolorheader", "true");
+  localStorage.removeItem("nowadarkheader");
+  localStorage.removeItem("nowagradientheader");
+  localStorage.removeItem("nowalightheader");
 };
 export const gradientheader = () => {
   document.querySelector(".app").classList.remove("color-header");
   document.querySelector(".app").classList.remove("dark-header");
   document.querySelector(".app").classList.remove("light-header");
   document.querySelector(".app").classList.add("gradient-header");
-  document.getElementById('myonoffswitch26').checked= true;
-  localStorage.setItem('nowagradientheader', 'true');
-  localStorage.removeItem('nowalightheader');
-  localStorage.removeItem('nowacolorheader');
-  localStorage.removeItem('nowadarkheader');
+  document.getElementById("myonoffswitch26").checked = true;
+  localStorage.setItem("nowagradientheader", "true");
+  localStorage.removeItem("nowalightheader");
+  localStorage.removeItem("nowacolorheader");
+  localStorage.removeItem("nowadarkheader");
 };
 export const Darkheader = () => {
   document.querySelector(".app").classList.remove("color-header");
   document.querySelector(".app").classList.remove("gradient-header");
   document.querySelector(".app").classList.remove("light-header");
   document.querySelector(".app").classList.add("dark-header");
-  document.getElementById('myonoffswitch8').checked= true;
-  localStorage.setItem('nowadarkheader', 'true');
-  localStorage.removeItem('nowalightheader');
-  localStorage.removeItem('nowacolorheader');
-  localStorage.removeItem('nowagradientheader');
+  document.getElementById("myonoffswitch8").checked = true;
+  localStorage.setItem("nowadarkheader", "true");
+  localStorage.removeItem("nowalightheader");
+  localStorage.removeItem("nowacolorheader");
+  localStorage.removeItem("nowagradientheader");
 };
 // menu
 export const LightMenu = () => {
@@ -75,73 +90,73 @@ export const LightMenu = () => {
   document.querySelector(".app").classList.remove("dark-menu");
   document.querySelector(".app").classList.remove("gradient-menu");
   document.querySelector(".app").classList.add("light-menu");
- document.getElementById('myonoffswitch3').checked= true;
-  localStorage.setItem('nowalightmenu', 'true');
-  localStorage.removeItem('nowacolormenu');
-  localStorage.removeItem('nowadarkmenu');
-  localStorage.removeItem('nowagradientmenu');
+  document.getElementById("myonoffswitch3").checked = true;
+  localStorage.setItem("nowalightmenu", "true");
+  localStorage.removeItem("nowacolormenu");
+  localStorage.removeItem("nowadarkmenu");
+  localStorage.removeItem("nowagradientmenu");
 };
 export const ColorMenu = () => {
   document.querySelector(".app").classList.remove("light-menu");
   document.querySelector(".app").classList.remove("dark-menu");
   document.querySelector(".app").classList.remove("gradient-menu");
   document.querySelector(".app").classList.add("color-menu");
-   document.getElementById('myonoffswitch4').checked= true;
-  localStorage.setItem('nowacolormenu', 'true');
-  localStorage.removeItem('nowadarkmenu');
-  localStorage.removeItem('nowagradientmenu');
-  localStorage.removeItem('nowalightmenu');
+  document.getElementById("myonoffswitch4").checked = true;
+  localStorage.setItem("nowacolormenu", "true");
+  localStorage.removeItem("nowadarkmenu");
+  localStorage.removeItem("nowagradientmenu");
+  localStorage.removeItem("nowalightmenu");
 };
 export const DarkMenu = () => {
   document.querySelector(".app").classList.remove("light-menu");
   document.querySelector(".app").classList.remove("color-menu");
   document.querySelector(".app").classList.remove("gradient-menu");
   document.querySelector(".app").classList.add("dark-menu");
-  document.getElementById('myonoffswitch5').checked= true;
-  localStorage.setItem('nowadarkmenu', 'true');
-  localStorage.removeItem('nowalightmenu');
-  localStorage.removeItem('nowacolormenu');
-  localStorage.removeItem('nowagradientmenu');
+  document.getElementById("myonoffswitch5").checked = true;
+  localStorage.setItem("nowadarkmenu", "true");
+  localStorage.removeItem("nowalightmenu");
+  localStorage.removeItem("nowacolormenu");
+  localStorage.removeItem("nowagradientmenu");
 };
 export const GradientMenu = () => {
   document.querySelector(".app").classList.remove("light-menu");
   document.querySelector(".app").classList.remove("color-menu");
   document.querySelector(".app").classList.remove("dark-menu");
   document.querySelector(".app").classList.add("gradient-menu");
- document.getElementById('myonoffswitch25').checked= true;
-  localStorage.setItem('nowagradientmenu', 'true');
-  localStorage.removeItem('nowalightmenu');
-  localStorage.removeItem('nowacolormenu');
-  localStorage.removeItem('nowadarkmenu');
+  document.getElementById("myonoffswitch25").checked = true;
+  localStorage.setItem("nowagradientmenu", "true");
+  localStorage.removeItem("nowalightmenu");
+  localStorage.removeItem("nowacolormenu");
+  localStorage.removeItem("nowadarkmenu");
 };
 //
 export const FullWidth = () => {
   document.querySelector(".app").classList.remove("layout-boxed");
   document.querySelector(".app").classList.add("layout-fullwidth");
- document.getElementById('myonoffswitch9').checked= true;
-  localStorage.setItem('nowafullwidth', 'true');
-  localStorage.removeItem('nowaboxed');
+  document.getElementById("myonoffswitch9").checked = true;
+  localStorage.setItem("nowafullwidth", "true");
+  localStorage.removeItem("nowaboxed");
 };
 export const Boxed = () => {
   document.querySelector(".app").classList.remove("layout-fullwidth");
   document.querySelector(".app").classList.add("layout-boxed");
- document.getElementById('myonoffswitch10').checked= true;
-  localStorage.setItem('nowaboxed', 'true');
-  localStorage.removeItem('nowafullwidth');
+  document.getElementById("myonoffswitch10").checked = true;
+  localStorage.setItem("nowaboxed", "true");
+  localStorage.removeItem("nowafullwidth");
 };
 export const Fixed = () => {
   document.querySelector(".app").classList.remove("scrollable-layout");
   document.querySelector(".app").classList.add("fixed-layout");
-  document.getElementById('myonoffswitch11').checked= true;
-  localStorage.setItem('nowafixed', 'true');
-  localStorage.removeItem('nowascrollable');
+  document.getElementById("myonoffswitch11").checked = true;
+  localStorage.setItem("nowafixed", "true");
+  localStorage.removeItem("nowascrollable");
 };
 export const Scrollable = () => {
   document.querySelector(".app").classList.remove("fixed-layout");
   document.querySelector(".app").classList.add("scrollable-layout");
- document.getElementById('myonoffswitch12').checked= true;
-  localStorage.setItem('nowascrollable', 'true');
-  localStorage.removeItem('nowafixed');
+  document.getElementById("myonoffswitch12").checked = true;
+  localStorage.setItem("nowascrollable", "true");
+  localStorage.removeItem("nowafixed");
 };
 
 // layout
@@ -158,13 +173,14 @@ export const VerticalMenu = () => {
   document.querySelector(".main-header").classList.remove("hor-header");
   document.querySelector(".main-sidemenu").classList.remove("container");
   document.querySelector(".main-container").classList.remove("container");
-  document.querySelector(".main-content").classList.remove("horizontal-content");
+  document
+    .querySelector(".main-content")
+    .classList.remove("horizontal-content");
   name();
   localStorage.setItem("nowavertical", true);
   localStorage.removeItem("nowahorizontal");
   localStorage.removeItem("nowahorizontalHover");
-  document.getElementById('myonoffswitch34').checked= true;
-
+  document.getElementById("myonoffswitch34").checked = true;
 };
 export const horizontal = () => {
   document.querySelector(".main-header")?.classList.add("hor-header");
@@ -174,7 +190,7 @@ export const horizontal = () => {
   document.querySelector(".main-content").classList.add("horizontal-content");
   document.querySelector(".app-sidebar").classList.add("horizontal-main");
   document.querySelector(".side-app").classList.add("container");
-  
+
   document.querySelector(".app").classList.remove("sidebar-mini");
   document.querySelector(".main-header").classList.remove("side-header");
   document.querySelector(".main-content").classList.remove("app-content");
@@ -183,7 +199,7 @@ export const horizontal = () => {
   document.querySelector(".app").classList.remove("horizontal-hover");
 
   document.querySelector(".horizontal .side-menu").style.flexWrap = "nowrap";
-  document.getElementById('myonoffswitch35').checked= true;
+  document.getElementById("myonoffswitch35").checked = true;
 
   checkHoriMenu();
   Horizontalmenudefultclose();
@@ -192,10 +208,9 @@ export const horizontal = () => {
   localStorage.removeItem("nowavertical");
   localStorage.setItem("nowahorizontal", true);
   localStorage.removeItem("nowahorizontalHover");
-}
+};
 
 export const HorizontalHoverMenu = () => {
-
   document.querySelector(".app").classList.add("horizontal-hover");
   document.querySelector(".app").classList.add("horizontal");
   document.querySelector(".main-content").classList.add("horizontal-content");
@@ -233,7 +248,7 @@ export const HorizontalHoverMenu = () => {
   Horizontalmenudefultclose();
   switcherArrowFn();
 
- document.getElementById('myonoffswitch111').checked= true;
+  document.getElementById("myonoffswitch111").checked = true;
 
   localStorage.removeItem("nowavertical");
   localStorage.setItem("nowahorizontalHover", true);
@@ -244,15 +259,12 @@ export const LightTheme = () => {
   document.querySelector("body").classList.add("light-theme");
 
   document.getElementById("myonoffswitch1").checked = true;
-  const Lightheader = document.querySelector("#myonoffswitch3")
-  if(Lightheader){
-
+  const Lightheader = document.querySelector("#myonoffswitch3");
+  if (Lightheader) {
     Lightheader.checked = true;
-    
-  } 
-  const Lightmenu = document.querySelector("#myonoffswitch6")
-  if(Lightmenu){
-    
+  }
+  const Lightmenu = document.querySelector("#myonoffswitch6");
+  if (Lightmenu) {
     Lightmenu.checked = true;
   }
 
@@ -275,21 +287,20 @@ export const LightTheme = () => {
   localStorage.removeItem("nowadark");
   localStorage.setItem("nowalighttheme", true);
   localStorage.removeItem("nowatransparent");
-  localStorage.removeItem("nowaBgImage")
-  localStorage.removeItem("")
-
+  localStorage.removeItem("nowaBgImage");
+  localStorage.removeItem("");
 };
 export const dark = () => {
   document.querySelector("body").classList.add("dark-theme");
 
-  const darkheader = document.querySelector("#myonoffswitch8")
-  if(darkheader){
-  darkheader.checked = true;
-}
-const darkmenu = document.querySelector("#myonoffswitch5") 
-if(darkmenu){
- darkmenu.checked = true;
-}
+  const darkheader = document.querySelector("#myonoffswitch8");
+  if (darkheader) {
+    darkheader.checked = true;
+  }
+  const darkmenu = document.querySelector("#myonoffswitch5");
+  if (darkmenu) {
+    darkmenu.checked = true;
+  }
   document.querySelector("#myonoffswitch2").checked = true;
 
   document.querySelector("body").classList.remove("transparent-theme");
@@ -310,8 +321,7 @@ if(darkmenu){
   localStorage.removeItem("nowalighttheme");
   localStorage.setItem("nowadark", true);
   localStorage.removeItem("nowatransparent");
-  localStorage.removeItem("nowaBgImage")
-
+  localStorage.removeItem("nowaBgImage");
 };
 export const transparent = () => {
   document.querySelector(".app").classList.add("transparent-theme");
@@ -340,7 +350,7 @@ export const transparent = () => {
   localStorage.removeItem("nowalighttheme");
   localStorage.setItem("nowatransparent", true);
   localStorage.removeItem("nowadark");
-localStorage.removeItem("nowaBgImage")
+  localStorage.removeItem("nowaBgImage");
 };
 
 /*Transparent Bg-Image Style Start*/
@@ -369,7 +379,6 @@ export function bgimage1() {
   document.querySelector("#myonoffswitchTransparent").checked = true;
 
   document.querySelector("html").style.removeProperty("--transparent-body");
-
 }
 
 export function bgimage2() {
@@ -384,7 +393,6 @@ export function bgimage2() {
   localStorage.setItem("nowaBgImage", "bg-img2");
   document.querySelector("html").style.removeProperty("--transparent-body");
 
-
   localStorage.removeItem("nowaPrimaryColor");
   localStorage.removeItem("nowaprimaryHoverColor");
   localStorage.removeItem("nowaprimaryBorderColor");
@@ -396,7 +404,6 @@ export function bgimage2() {
   document.querySelector("#myonoffswitch2").checked = false;
   document.querySelector("#myonoffswitch1").checked = false;
   document.querySelector("#myonoffswitchTransparent").checked = true;
-
 }
 
 export function bgimage3() {
@@ -422,7 +429,6 @@ export function bgimage3() {
   document.querySelector("#myonoffswitch2").checked = false;
   document.querySelector("#myonoffswitch1").checked = false;
   document.querySelector("#myonoffswitchTransparent").checked = true;
-
 }
 
 export function bgimage4() {
@@ -456,8 +462,11 @@ export function checkHoriMenu() {
   let menuWidth = document.querySelector(".horizontal-main");
   let menuItems = document.querySelector(".side-menu");
   let mainSidemenuWidth = document.querySelector(".main-sidemenu");
-  let menuContainerWidth = menuWidth?.offsetWidth - mainSidemenuWidth?.offsetWidth;
-  let marginLeftValue = Math.ceil(Number(window.getComputedStyle(menuItems).marginLeft.split("px")[0]));
+  let menuContainerWidth =
+    menuWidth?.offsetWidth - mainSidemenuWidth?.offsetWidth;
+  let marginLeftValue = Math.ceil(
+    Number(window.getComputedStyle(menuItems).marginLeft.split("px")[0])
+  );
   let marginRightValue = Math.ceil(
     Number(window.getComputedStyle(menuItems).marginRight.split("px")[0])
   );
@@ -604,13 +613,13 @@ function transparentStyle() {
   document.querySelector(".app").classList.remove("gradient-header");
 }
 export function resetData() {
-  document.querySelector("#myonoffswitch1").checked = true;   //lighttheme
-  document.querySelector("#myonoffswitch11").checked = true;   //fixed
-  document.querySelector("#myonoffswitch3").checked = true;    //lightmenu
-  document.querySelector("#myonoffswitch6").checked = true;    //lightheader
-  document.querySelector("#myonoffswitch9").checked = true;    //fullwidth
-  document.querySelector("#myonoffswitch54").checked = true;  //Ltr
-  document.querySelector("#myonoffswitch34").checked = true;  //Vertail
+  document.querySelector("#myonoffswitch1").checked = true; //lighttheme
+  document.querySelector("#myonoffswitch11").checked = true; //fixed
+  document.querySelector("#myonoffswitch3").checked = true; //lightmenu
+  document.querySelector("#myonoffswitch6").checked = true; //lightheader
+  document.querySelector("#myonoffswitch9").checked = true; //fullwidth
+  document.querySelector("#myonoffswitch54").checked = true; //Ltr
+  document.querySelector("#myonoffswitch34").checked = true; //Vertail
   document.querySelector("#myonoffswitch111").checked = false;
   document.querySelector(".app")?.classList.remove("bg-img4");
   document.querySelector(".app")?.classList.remove("bg-img1");
@@ -645,10 +654,21 @@ export function resetData() {
   document.querySelector(".main-sidemenu").classList.remove("container");
   document.querySelector(".main-container").classList.remove("container");
   document.querySelector(".side-app").classList.remove("container");
-  document.querySelector(".main-content").classList.remove("horizontal-content");
-    localStorage.clear();
-    
-    document.getElementById("bootstrapLink")?.setAttribute("href", `${import.meta.env.BASE_URL === 'production' ? "/" : "https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"}`);
+  document
+    .querySelector(".main-content")
+    .classList.remove("horizontal-content");
+  localStorage.clear();
+
+  document
+    .getElementById("bootstrapLink")
+    ?.setAttribute(
+      "href",
+      `${
+        import.meta.env.BASE_URL === "production"
+          ? "/"
+          : "https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      }`
+    );
   document.querySelector(".app").classList.add("ltr");
   document.querySelector("html[lang=en]").setAttribute("dir", "ltr");
   document.querySelector(".app").classList.remove("rtl");
@@ -669,19 +689,19 @@ export function name() {
     localStorage.getItem("nowatransparentBgImgPrimary") ||
     primaryColorVal;
 
-  let colorData = hexToRgba(myVarVal || "#38cab3", 0.1);
+  let colorData = hexToRgba(myVarVal || "#38CAB3", 0.1);
   document.querySelector("html").style.setProperty("--primary01", colorData);
 
-  let colorData1 = hexToRgba(myVarVal || "#38cab3", 0.2);
+  let colorData1 = hexToRgba(myVarVal || "#38CAB3", 0.2);
   document.querySelector("html").style.setProperty("--primary02", colorData1);
 
-  let colorData2 = hexToRgba(myVarVal || "#38cab3", 0.3);
+  let colorData2 = hexToRgba(myVarVal || "#38CAB3", 0.3);
   document.querySelector("html").style.setProperty("--primary03", colorData2);
 
-  let colorData3 = hexToRgba(myVarVal || "#38cab3", 0.6);
+  let colorData3 = hexToRgba(myVarVal || "#38CAB3", 0.6);
   document.querySelector("html").style.setProperty("--primary06", colorData3);
 
-  let colorData4 = hexToRgba(myVarVal || "#38cab3", 0.9);
+  let colorData4 = hexToRgba(myVarVal || "#38CAB3", 0.9);
   document.querySelector("html").style.setProperty("--primary09", colorData4);
 }
 name();
@@ -690,12 +710,12 @@ export function localStorageBackUp() {
   let html = document.querySelector("html")?.style;
   let body = document.querySelector("body");
 
-  if (localStorage.getItem("nowaBgImage")!== null){
-    document.body.classList.add(localStorage.getItem("nowaBgImage"))
-    document.body.classList.add("transparent-theme")
-    localStorage.removeItem("nowalighttheme")
-    localStorage.removeItem("nowadark")
-    localStorage.removeItem("nowatransparent")
+  if (localStorage.getItem("nowaBgImage") !== null) {
+    document.body.classList.add(localStorage.getItem("nowaBgImage"));
+    document.body.classList.add("transparent-theme");
+    localStorage.removeItem("nowalighttheme");
+    localStorage.removeItem("nowadark");
+    localStorage.removeItem("nowatransparent");
   }
   if (localStorage.getItem("nowaPrimaryColor") !== null) {
     body?.classList.add("light-theme");
@@ -704,7 +724,7 @@ export function localStorageBackUp() {
 
     body?.classList.remove("dark-theme");
     body?.classList.remove("transparent-theme");
-    
+
     html?.setProperty(
       "--primary-bg-color",
       localStorage.getItem("nowaPrimaryColor")
@@ -777,8 +797,8 @@ export function localStorageBackUp() {
     );
     body?.classList.add(img);
   }
-  (localStorage.nowaltr) && RtltoLtr();
-  (localStorage.nowartl) && LtrtoRtl();
+  localStorage.nowaltr && RtltoLtr();
+  localStorage.nowartl && LtrtoRtl();
 
   if (localStorage.nowahorizontal) {
     document.querySelector(".main-header")?.classList.add("hor-header");
@@ -798,11 +818,10 @@ export function localStorageBackUp() {
     document.querySelector(".side-app").classList.add("container");
 
     document.querySelector(".horizontal .side-menu").style.flexWrap = "nowrap";
-    document.querySelector("#myonoffswitch35").checked = true;  
+    document.querySelector("#myonoffswitch35").checked = true;
     checkHoriMenu();
     Horizontalmenudefultclose();
     switcherArrowFn();
-
   }
 
   if (localStorage.nowahorizontalHover) {
@@ -818,7 +837,9 @@ export function localStorageBackUp() {
     document.querySelector("#slide-left").classList.remove("d-none");
     document.querySelector("#slide-right").classList.remove("d-none");
     document.querySelector(".main-content").classList.remove("app-content");
-    document.querySelector(".main-container").classList.remove("container-fluid");
+    document
+      .querySelector(".main-container")
+      .classList.remove("container-fluid");
     document.querySelector(".app").classList.remove("sidebar-mini");
     document.querySelector(".app").classList.remove("sidenav-toggled");
     document.querySelector("#myonoffswitch111").checked = true;
@@ -844,32 +865,32 @@ export function localStorageBackUp() {
     switcherArrowFn();
   }
   if (localStorage.nowadark) {
-    dark()
+    dark();
   }
   if (localStorage.nowatransparent) {
-    transparent()
+    transparent();
   }
   if (localStorage.nowalighttheme) {
-    LightTheme()
+    LightTheme();
   }
 
-  (localStorage.nowalightmenu) && LightMenu();
-  (localStorage.nowacolormenu) && ColorMenu ();
-  (localStorage.nowadarkmenu) && DarkMenu();
-  (localStorage.nowagradientmenu) && GradientMenu();
+  localStorage.nowalightmenu && LightMenu();
+  localStorage.nowacolormenu && ColorMenu();
+  localStorage.nowadarkmenu && DarkMenu();
+  localStorage.nowagradientmenu && GradientMenu();
 
-  (localStorage.nowalightheader) && Lightheader();
-  (localStorage.nowacolorheader) && Colorheader ();
-  (localStorage.nowadarkheader) && Darkheader();
-  (localStorage.nowagradientheader) && gradientheader();
+  localStorage.nowalightheader && Lightheader();
+  localStorage.nowacolorheader && Colorheader();
+  localStorage.nowadarkheader && Darkheader();
+  localStorage.nowagradientheader && gradientheader();
 
-  (localStorage.nowafullwidth) && FullWidth();
-  (localStorage.nowaboxed) && Boxed();
+  localStorage.nowafullwidth && FullWidth();
+  localStorage.nowaboxed && Boxed();
 
-  (localStorage.nowafixed) && Fixed();
-  (localStorage.nowascrollable) && Scrollable();
+  localStorage.nowafixed && Fixed();
+  localStorage.nowascrollable && Scrollable();
 }
-export function localStorageBackUp2(){
+export function localStorageBackUp2() {
   const html = document.querySelector("html")?.style;
   const body = document.querySelector("body");
   if (localStorage.getItem("nowaPrimaryColor") !== null) {
@@ -879,7 +900,7 @@ export function localStorageBackUp2(){
 
     body?.classList.remove("dark-theme");
     body?.classList.remove("transparent-theme");
-    
+
     html?.setProperty(
       "--primary-bg-color",
       localStorage.getItem("nowaPrimaryColor")
@@ -911,10 +932,10 @@ export function localStorageBackUp2(){
       localStorage.getItem("nowadarkPrimaryColor")
     );
   }
-  (localStorage.nowaltr) && RtltoLtr();
-  (localStorage.nowartl) && LtrtoRtl();
-  (localStorage.nowalighttheme) && LightTheme();
-  (localStorage.nowadark) && dark();
+  localStorage.nowaltr && RtltoLtr();
+  localStorage.nowartl && LtrtoRtl();
+  localStorage.nowalighttheme && LightTheme();
+  localStorage.nowadark && dark();
 }
 
 export function switcherArrowFn() {
@@ -946,36 +967,42 @@ export function switcherArrowFn() {
     let menuWidth = document.querySelector(".horizontal-main");
     let menuItems = document.querySelector(".side-menu");
     let mainSidemenuWidth = document.querySelector(".main-sidemenu");
-    let menuContainerWidth = menuWidth?.offsetWidth - mainSidemenuWidth?.offsetWidth;
-    let marginLeftValue = Math.ceil(Number(window.getComputedStyle(menuItems).marginLeft.split("px")[0]));
-    let marginRightValue = Math.ceil(Number(window.getComputedStyle(menuItems).marginRight.split("px")[0]));
-    let check = menuItems.scrollWidth + (0 - menuWidth?.offsetWidth) + menuContainerWidth;
+    let menuContainerWidth =
+      menuWidth?.offsetWidth - mainSidemenuWidth?.offsetWidth;
+    let marginLeftValue = Math.ceil(
+      Number(window.getComputedStyle(menuItems).marginLeft.split("px")[0])
+    );
+    let marginRightValue = Math.ceil(
+      Number(window.getComputedStyle(menuItems).marginRight.split("px")[0])
+    );
+    let check =
+      menuItems.scrollWidth + (0 - menuWidth?.offsetWidth) + menuContainerWidth;
 
     if (menuWidth?.offsetWidth - menuContainerWidth > menuItems.scrollWidth) {
       document.querySelector(".slide-left")?.classList.add("d-none");
       document.querySelector(".slide-right")?.classList.add("d-none");
       menuItems.style.marginRight = 0;
       menuItems.style.marginLeft = 0;
-
-    }
-    else {
+    } else {
       document.querySelector(".slide-right")?.classList.remove("d-none");
     }
 
     if (document.querySelector("html")?.getAttribute("dir") === "rtl") {
-      if ((Math.abs(marginRightValue) < Math.abs(check)) === false && (menuWidth?.offsetWidth - menuContainerWidth < menuItems.scrollWidth)
+      if (
+        Math.abs(marginRightValue) < Math.abs(check) === false &&
+        menuWidth?.offsetWidth - menuContainerWidth < menuItems.scrollWidth
       ) {
-        menuItems.style.marginRight = -check + 'px';
+        menuItems.style.marginRight = -check + "px";
         document.querySelector(".slide-left")?.classList.remove("d-none");
       } else {
         menuItems.style.marginRight = 0;
       }
     } else {
       if (
-        (Math.abs(marginLeftValue) < Math.abs(check)) === false &&
-        (menuWidth?.offsetWidth - menuContainerWidth < menuItems.scrollWidth)
+        Math.abs(marginLeftValue) < Math.abs(check) === false &&
+        menuWidth?.offsetWidth - menuContainerWidth < menuItems.scrollWidth
       ) {
-        menuItems.style.marginLeft = -check + 'px';
+        menuItems.style.marginLeft = -check + "px";
         document.querySelector(".slide-right")?.classList.add("d-none");
       } else {
         menuItems.style.marginLeft = 0;
@@ -995,14 +1022,22 @@ export function switcherArrowFn() {
     let menuWidth = document.querySelector(".horizontal-main");
     let menuItems = document.querySelector(".side-menu");
     let mainSidemenuWidth = document.querySelector(".main-sidemenu");
-    let menuContainerWidth = menuWidth?.offsetWidth - mainSidemenuWidth?.offsetWidth;
-    let marginLeftValue = Math.ceil(Number(window.getComputedStyle(menuItems).marginLeft.split("px")[0])) + 100;
-    let marginRightValue = Math.ceil(Number(window.getComputedStyle(menuItems).marginRight.split("px")[0])) + 100;
+    let menuContainerWidth =
+      menuWidth?.offsetWidth - mainSidemenuWidth?.offsetWidth;
+    let marginLeftValue =
+      Math.ceil(
+        Number(window.getComputedStyle(menuItems).marginLeft.split("px")[0])
+      ) + 100;
+    let marginRightValue =
+      Math.ceil(
+        Number(window.getComputedStyle(menuItems).marginRight.split("px")[0])
+      ) + 100;
 
-    if (document.querySelector('html').getAttribute('dir') === "rtl") {
+    if (document.querySelector("html").getAttribute("dir") === "rtl") {
       if (marginRightValue < 0) {
         menuItems.style.marginLeft = "0px";
-        menuItems.style.marginRight = Number(menuItems.style.marginRight.split("px")[0]) + 100 + "px";
+        menuItems.style.marginRight =
+          Number(menuItems.style.marginRight.split("px")[0]) + 100 + "px";
         document.querySelector(".slide-right")?.classList.remove("d-none");
         document.querySelector(".slide-left")?.classList.remove("d-none");
       } else {
@@ -1022,16 +1057,18 @@ export function switcherArrowFn() {
       subNav.forEach((e) => {
         e.style.display = "";
       });
-    }
-    else {
+    } else {
       if (marginLeftValue < 0) {
-        menuItems.style.marginLeft = Number(menuItems.style.marginLeft.split("px")[0]) + 100 + "px";
-        if (menuWidth?.offsetWidth - menuContainerWidth < menuItems.scrollWidth) {
+        menuItems.style.marginLeft =
+          Number(menuItems.style.marginLeft.split("px")[0]) + 100 + "px";
+        if (
+          menuWidth?.offsetWidth - menuContainerWidth <
+          menuItems.scrollWidth
+        ) {
           document.querySelector(".slide-left")?.classList.remove("d-none");
           document.querySelector(".slide-right")?.classList.remove("d-none");
         }
-      }
-      else {
+      } else {
         document.querySelector(".slide-left")?.classList.add("d-none");
       }
 
@@ -1058,12 +1095,20 @@ export function switcherArrowFn() {
     let menuWidth = document.querySelector(".horizontal-main");
     let menuItems = document.querySelector(".side-menu");
     let mainSidemenuWidth = document.querySelector(".main-sidemenu");
-    let menuContainerWidth = menuWidth?.offsetWidth - mainSidemenuWidth?.offsetWidth;
-    let marginLeftValue = Math.ceil(Number(window.getComputedStyle(menuItems).marginLeft.split("px")[0])) - 100;
-    let marginRightValue = Math.ceil(Number(window.getComputedStyle(menuItems).marginRight.split("px")[0])) - 100;
-    let check = menuItems.scrollWidth + (0 - menuWidth?.offsetWidth) + menuContainerWidth;
+    let menuContainerWidth =
+      menuWidth?.offsetWidth - mainSidemenuWidth?.offsetWidth;
+    let marginLeftValue =
+      Math.ceil(
+        Number(window.getComputedStyle(menuItems).marginLeft.split("px")[0])
+      ) - 100;
+    let marginRightValue =
+      Math.ceil(
+        Number(window.getComputedStyle(menuItems).marginRight.split("px")[0])
+      ) - 100;
+    let check =
+      menuItems.scrollWidth + (0 - menuWidth?.offsetWidth) + menuContainerWidth;
 
-    if (document.querySelector('html').getAttribute('dir') === "rtl") {
+    if (document.querySelector("html").getAttribute("dir") === "rtl") {
       if (marginRightValue > -check) {
         menuItems.style.marginLeft = "0px";
         menuItems.style.marginRight =
@@ -1087,8 +1132,7 @@ export function switcherArrowFn() {
       subNav.forEach((e) => {
         e.style.display = "";
       });
-    }
-    else {
+    } else {
       if (marginLeftValue > -check) {
         // menuItems.style.marginRight = 0;
         menuItems.style.marginLeft =

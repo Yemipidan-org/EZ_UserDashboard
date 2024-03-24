@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
-import { Button, Row } from 'react-bootstrap'
+import { Button, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import * as Switcherdatacustam from "../../../../common/switcherdatacustam";
 export default function Custompagesswitcher() {
   useEffect(() => {
     Switcherdatacustam.localStorageBackUp();
-  },[]);
+  }, []);
 
   function changePrimaryColor() {
     var userColor = document.getElementById("colorID").value;
@@ -53,10 +53,9 @@ export default function Custompagesswitcher() {
     localStorage.removeItem("primaryHoverColor");
     localStorage.removeItem("primaryBorderColor");
 
-    Switcherdatacustam.name();    
+    Switcherdatacustam.name();
   }
   return (
-
     <div className="switcher-wrapper">
       <div className="demo_changer">
         <div className="form_holder sidebar-right1">
@@ -146,23 +145,22 @@ export default function Custompagesswitcher() {
                       </p>
                     </div>
                     <div className="switch-toggle d-flex">
-                          <span className="me-auto">Light Primary</span>
-                          <div className="">
-                            <input
-                              className="wd-25 ht-25 input-color-picker color-primary-light"
-                              defaultValue="#38cab3"
-                              id="colorID"
-                              
-                              onChange={(e) => changePrimaryColor(e.target.value)}
-                              type="color"
-                              data-id="bg-color"
-                              data-id1="bg-hover"
-                              data-id2="bg-border"
-                              data-id7="transparentcolor"
-                              name="lightPrimary"
-                            />
-                          </div>
-                        </div>
+                      <span className="me-auto">Light Primary</span>
+                      <div className="">
+                        <input
+                          className="wd-25 ht-25 input-color-picker color-primary-light"
+                          defaultValue="#38CAB3"
+                          id="colorID"
+                          onChange={(e) => changePrimaryColor(e.target.value)}
+                          type="color"
+                          data-id="bg-color"
+                          data-id1="bg-hover"
+                          data-id2="bg-border"
+                          data-id7="transparentcolor"
+                          name="lightPrimary"
+                        />
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -170,28 +168,28 @@ export default function Custompagesswitcher() {
                 <h4>Dark Theme Style</h4>
                 <div className="skin-body">
                   <div className="switch_section">
-                  <div className="switch-toggle d-flex mt-2">
-                          <span className="me-auto">Dark Theme</span>
-                          <p className="onoffswitch2 my-0">
-                            <input
-                              type="radio"
-                              name="onoffswitch1"
-                              id="myonoffswitch2"
-                              onClick={() => Switcherdatacustam.dark()}
-                              className="onoffswitch2-checkbox"
-                            />
-                            <label
-                              htmlFor="myonoffswitch2"
-                              className="onoffswitch2-label"
-                            ></label>
-                          </p>
-                        </div>
+                    <div className="switch-toggle d-flex mt-2">
+                      <span className="me-auto">Dark Theme</span>
+                      <p className="onoffswitch2 my-0">
+                        <input
+                          type="radio"
+                          name="onoffswitch1"
+                          id="myonoffswitch2"
+                          onClick={() => Switcherdatacustam.dark()}
+                          className="onoffswitch2-checkbox"
+                        />
+                        <label
+                          htmlFor="myonoffswitch2"
+                          className="onoffswitch2-label"
+                        ></label>
+                      </p>
+                    </div>
                     <div className="switch-toggle d-flex mt-2">
                       <span className="me-auto">Dark Primary</span>
                       <div className="">
                         <input
                           className="wd-25 ht-25 input-dark-color-picker color-primary-dark"
-                          defaultValue="#38cab3"
+                          defaultValue="#38CAB3"
                           id="darkPrimaryColorID"
                           onInput={() => darkPrimaryColor()}
                           type="color"

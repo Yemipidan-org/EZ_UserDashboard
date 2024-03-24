@@ -42,6 +42,7 @@ export default function Wallet() {
   }, []);
 
   const [userInfo, setUserInfo] = useState({});
+  const [deposits, setDepositsData] = useState({});
 
   // LoginSession(setUserId);
   useEffect(() => {
@@ -50,7 +51,8 @@ export default function Wallet() {
       setUserInfo,
       navigate,
       setWalletData,
-      setInvestments
+      setInvestments,
+      setDepositsData
     );
 
     const pollingInterval = setInterval(() => {
@@ -59,7 +61,8 @@ export default function Wallet() {
         setUserInfo,
         navigate,
         setWalletData,
-        setInvestments
+        setInvestments,
+        setDepositsData
       ); // Fetch data at regular intervals
 
       // Optional: You can clear the interval if needed
@@ -71,6 +74,7 @@ export default function Wallet() {
   }, []);
 
   console.log(investments[0]);
+  console.log("all depo", deposits);
 
   return (
     <Fragment>
@@ -152,7 +156,9 @@ export default function Wallet() {
                   <div className="col-8">
                     <div className="ps-4 pt-4 pe-3 pb-4">
                       <div className="">
-                        <h6 className="mb-2 tx-12">Amount Invested @ 8%</h6> 
+                        <h6 className="mb-2 tx-12">
+                          Amount Invested @ 8% per 30 days
+                        </h6>
                       </div>
                       <div className="pb-0 mt-0">
                         <div className="d-flex">
@@ -188,7 +194,9 @@ export default function Wallet() {
                   <div className="col-8">
                     <div className="ps-4 pt-4 pe-3 pb-4">
                       <div className="">
-                        <h6 className="mb-2 tx-12">Expected Amount</h6>
+                        <h6 className="mb-2 tx-12">
+                          Expected total Amount in 30 days
+                        </h6>
                       </div>
                       <div className="pb-0">
                         <div className="d-flex">
@@ -481,101 +489,55 @@ export default function Wallet() {
                             className="panel-body tabs-menu-body main-content-body-right"
                             id="tab4"
                           >
-                            <ListGroup className="list-lg-group list-group-flush">
-                              <Link to="#" className="border-0">
-                                <ListGroup.Item className="list-group-item-action border-0">
-                                  <div className="media mt-0 flex-wrap">
-                                    <span className="me-3 bg-primary-transparent text-primary transaction-icon">
-                                      <i className="fe fe-chevrons-down"></i>
-                                    </span>
-                                    <div className="media-body">
-                                      <div className="d-flex align-items-center">
-                                        <div className="mt-0">
-                                          <h5 className="mb-1 tx-13 font-weight-sembold text-dark">
-                                            <span className="me-3">
-                                              Deposit
-                                            </span>
-                                          </h5>
-                                          <p className="mb-0 tx-12 text-muted">
-                                            24-08-2021
-                                          </p>
-                                        </div>
-                                        <span className="ms-auto wd-25p tx-12">
-                                          <span className="text-danger tx-11 text-end d-block">
-                                            Pending
-                                          </span>
-                                          <span className="float-end text-success font-weight-semibold">
-                                            $256,347
-                                          </span>
+                            {Array.isArray(deposits) &&
+                            deposits.length === 0 ? (
+                              <div className="text-center">No deposits</div>
+                            ) : (
+                              Array.isArray(deposits) &&
+                              deposits.map((deposits) => (
+                                <ListGroup className="list-lg-group list-group-flush">
+                                  <Link to="#" className="border-0">
+                                    <ListGroup.Item className="list-group-item-action border-0">
+                                      <div className="media mt-0 flex-wrap">
+                                        <span className="me-3 bg-primary-transparent text-primary transaction-icon">
+                                          <i className="fe fe-chevrons-down"></i>
                                         </span>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </ListGroup.Item>
-                              </Link>
-                              <Link to="#" className="border-0">
-                                <ListGroup.Item className="list-group-item-action border-0">
-                                  <div className="media mt-0 flex-wrap">
-                                    <span className="me-3 bg-primary-transparent text-primary transaction-icon">
-                                      <i className="fe fe-chevrons-down"></i>
-                                    </span>
-                                    <div className="media-body">
-                                      <div className="d-flex align-items-center">
-                                        <div className="mt-0">
-                                          <h5 className="mb-1 tx-13 font-weight-sembold text-dark">
-                                            <span className="me-3">
-                                              Deposit
+                                        <div className="media-body">
+                                          <div className="d-flex align-items-center">
+                                            <div className="mt-0">
+                                              <h5 className="mb-1 tx-13 font-weight-sembold text-dark">
+                                                <span className="me-3">
+                                                  {deposits?.transaction_id}
+                                                </span>
+                                              </h5>
+                                              <p className="mb-0 tx-12 text-muted">
+                                                {deposits?.formatted_date}
+                                              </p>
+                                            </div>
+                                            <span className="ms-auto wd-25p tx-12">
+                                              {deposits?.status ===
+                                              "pending" ? (
+                                                <span className="text-danger tx-11 text-end d-block">
+                                                  {deposits?.status}
+                                                </span>
+                                              ) : (
+                                                <span className="text-success tx-11 text-end d-block">
+                                                  {deposits?.status}
+                                                </span>
+                                              )}
+
+                                              <span className="float-end text-success font-weight-semibold">
+                                                ${deposits?.usd_amount}
+                                              </span>
                                             </span>
-                                          </h5>
-                                          <p className="mb-0 tx-12 text-muted">
-                                            24-08-2021
-                                          </p>
+                                          </div>
                                         </div>
-                                        <span className="ms-auto wd-25p tx-12">
-                                          <span className="text-danger tx-11 text-end d-block">
-                                            Pending
-                                          </span>
-                                          <span className="float-end text-success font-weight-semibold">
-                                            $256,347
-                                          </span>
-                                        </span>
                                       </div>
-                                    </div>
-                                  </div>
-                                </ListGroup.Item>
-                              </Link>
-                              <Link to="#" className="border-0">
-                                <ListGroup.Item className="list-group-item-action border-0">
-                                  <div className="media mt-0 flex-wrap">
-                                    <span className="me-3 bg-primary-transparent text-primary transaction-icon">
-                                      <i className="fe fe-chevrons-down"></i>
-                                    </span>
-                                    <div className="media-body">
-                                      <div className="d-flex align-items-center">
-                                        <div className="mt-0">
-                                          <h5 className="mb-1 tx-13 font-weight-sembold text-dark">
-                                            <span className="me-3">
-                                              Deposit
-                                            </span>
-                                          </h5>
-                                          <p className="mb-0 tx-12 text-muted">
-                                            24-08-2021
-                                          </p>
-                                        </div>
-                                        <span className="ms-auto wd-25p tx-12">
-                                          <span className="text-danger tx-11 text-end d-block">
-                                            Pending
-                                          </span>
-                                          <span className="float-end text-success font-weight-semibold">
-                                            $256,347
-                                          </span>
-                                        </span>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </ListGroup.Item>
-                              </Link>
-                            </ListGroup>
+                                    </ListGroup.Item>
+                                  </Link>
+                                </ListGroup>
+                              ))
+                            )}
                           </div>
                         </Tab>
                         <Tab eventKey="Tab 02" title="Investment">

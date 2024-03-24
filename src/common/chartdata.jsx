@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ReactApexChart from "react-apexcharts";
-import {  OverlayTrigger, Tooltip } from "react-bootstrap";
+import { OverlayTrigger, Tooltip } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { Chart as ChartJS, registerables } from "chart.js";
 ChartJS.register(...registerables);
@@ -10,7 +10,6 @@ export class Statistics1 extends React.Component {
     super(props);
 
     this.state = {
-
       series: [
         {
           name: "Total Orders",
@@ -30,9 +29,8 @@ export class Statistics1 extends React.Component {
           borderColor: "#f2f6f7",
           show: true,
         },
-        colors: ['var(--primary-bg-color)' || "#38cab3", "#e4e7ed"],
+        colors: ["var(--primary-bg-color)" || "#38CAB3", "#e4e7ed"],
         plotOptions: {
-      
           bar: {
             borderradius: "5px",
             colors: {
@@ -116,23 +114,23 @@ export class Statistics1 extends React.Component {
           },
         },
         fill: {
-          opacity: 1
+          opacity: 1,
         },
-
       },
-
-
     };
   }
-
-
 
   render() {
     return (
       <div id="statistics1">
-        <ReactApexChart options={this.state.options} series={this.state.series} type="bar" height={280} />
+        <ReactApexChart
+          options={this.state.options}
+          series={this.state.series}
+          type="bar"
+          height={280}
+        />
       </div>
-    )
+    );
   }
 }
 export class Viewers extends React.Component {
@@ -140,7 +138,6 @@ export class Viewers extends React.Component {
     super(props);
 
     this.state = {
-
       series: [
         {
           name: "Male",
@@ -164,7 +161,7 @@ export class Viewers extends React.Component {
         grid: {
           borderColor: "#f2f6f7",
         },
-        colors: ['var(--primary-bg-color)' || "#38cab3", "#e4e7ed"],
+        colors: ["var(--primary-bg-color)" || "#38CAB3", "#e4e7ed"],
         background: "transparent",
         dataLabels: {
           enabled: false,
@@ -213,15 +210,19 @@ export class Viewers extends React.Component {
           },
         },
       },
-
     };
   }
   render() {
     return (
       <div id="chart">
-        <ReactApexChart options={this.state.options} series={this.state.series} type="line" height={300} />
+        <ReactApexChart
+          options={this.state.options}
+          series={this.state.series}
+          type="line"
+          height={300}
+        />
       </div>
-    )
+    );
   }
 }
 export const Radialbar = {
@@ -237,7 +238,7 @@ export const Radialbar = {
     },
   },
   options: {
-    colors: ['var(--primary-bg-color)'],
+    colors: ["var(--primary-bg-color)"],
 
     stroke: {
       lineCap: "round",
@@ -245,18 +246,18 @@ export const Radialbar = {
     states: {
       normal: {
         filter: {
-          type: 'none',
-      }
+          type: "none",
+        },
       },
       hover: {
-          filter: {
-              type: 'none',
-          }
+        filter: {
+          type: "none",
+        },
       },
       active: {
         filter: {
-          type: 'none',
-        }
+          type: "none",
+        },
       },
     },
     plotOptions: {
@@ -276,104 +277,109 @@ export class Statistics2 extends React.Component {
     super(props);
     this.state = {
       series: [
-         {
-           name: "Sales",
-           data: [32, 15, 63, 51, 136, 62, 99, 42, 178, 76, 32, 180],
-         },
-       ],
+        {
+          name: "Sales",
+          data: [32, 15, 63, 51, 136, 62, 99, 42, 178, 76, 32, 180],
+        },
+      ],
       options: {
         chart: {
-         height: 280,
-         type: "line",
-         zoom: {
-           enabled: false,
-         },
-         dropShadow: {
-           enabled: true,
-           enabledOnSeries: undefined,
-           top: 5,
-           left: 0,
-           blur: 3,
-           color: "#000",
-           opacity: 0.1,
-         },
-       },
+          height: 280,
+          type: "line",
+          zoom: {
+            enabled: false,
+          },
+          dropShadow: {
+            enabled: true,
+            enabledOnSeries: undefined,
+            top: 5,
+            left: 0,
+            blur: 3,
+            color: "#000",
+            opacity: 0.1,
+          },
+        },
         dataLabels: {
-         enabled: false,
-       },
+          enabled: false,
+        },
         legend: {
-         position: "top",
-         horizontalAlign: "left",
-         offsetX: -15,
-         fontWeight: "bold",
-       },
-       stroke: {
-         curve: "smooth",
-         width: "3",
-       },
-       grid: {
-         borderColor: "#f2f6f7",
-       },
-       colors: ['var(--primary-bg-color)' || "#1fc5db"],
+          position: "top",
+          horizontalAlign: "left",
+          offsetX: -15,
+          fontWeight: "bold",
+        },
+        stroke: {
+          curve: "smooth",
+          width: "3",
+        },
+        grid: {
+          borderColor: "#f2f6f7",
+        },
+        colors: ["var(--primary-bg-color)" || "#1fc5db"],
       },
       yaxis: {
-         title: {
-           text: "Growth",
-           style: {
-             color: "#adb5be",
-             fontSize: "14px",
-             fontFamily: "poppins, sans-serif",
-             fontWeight: 600,
-             cssClass: "apexcharts-yaxis-label",
-           },
-         },
-         labels: {
-           formatter: function (y) {
-             return y.toFixed(0) + "";
-           },
-         },
-       },
-       xaxis: {
-         type: "number",
-         categories: [
-           "1",
-           "2",
-           "3",
-           "4",
-           "5",
-           "6",
-           "7",
-           "8",
-           "9",
-           "10",
-           "11",
-           "12",
-         ],
-         axisBorder: {
-           show: true,
-           color: "rgba(119, 119, 142, 0.05)",
-           offsetX: 0,
-           offsetY: 0,
-         },
-         axisTicks: {
-           show: true,
-           borderType: "solid",
-           color: "rgba(119, 119, 142, 0.05)",
-           width: 6,
-           offsetX: 0,
-           offsetY: 0,
-         },
-         labels: {
-           rotate: -90,
-         },
-       },
+        title: {
+          text: "Growth",
+          style: {
+            color: "#adb5be",
+            fontSize: "14px",
+            fontFamily: "poppins, sans-serif",
+            fontWeight: 600,
+            cssClass: "apexcharts-yaxis-label",
+          },
+        },
+        labels: {
+          formatter: function (y) {
+            return y.toFixed(0) + "";
+          },
+        },
+      },
+      xaxis: {
+        type: "number",
+        categories: [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11",
+          "12",
+        ],
+        axisBorder: {
+          show: true,
+          color: "rgba(119, 119, 142, 0.05)",
+          offsetX: 0,
+          offsetY: 0,
+        },
+        axisTicks: {
+          show: true,
+          borderType: "solid",
+          color: "rgba(119, 119, 142, 0.05)",
+          width: 6,
+          offsetX: 0,
+          offsetY: 0,
+        },
+        labels: {
+          rotate: -90,
+        },
+      },
     };
   }
 
   render() {
     return (
       <div id="chart">
-        <ReactApexChart options={this.state.options} series={this.state.series} type="line" height={270} />
+        <ReactApexChart
+          options={this.state.options}
+          series={this.state.series}
+          type="line"
+          height={270}
+        />
       </div>
     );
   }
@@ -383,106 +389,112 @@ export class Budget extends React.Component {
     super(props);
 
     this.state = {
-
       series: [
-         {
-           name: "This Week",
-           data: [44, 42, 57, 86, 58, 55, 70],
-         },
-         {
-           name: "Last Week",
-           data: [-34, -22, -37, -56, -21, -35, -60],
-         },
-       ],
+        {
+          name: "This Week",
+          data: [44, 42, 57, 86, 58, 55, 70],
+        },
+        {
+          name: "Last Week",
+          data: [-34, -22, -37, -56, -21, -35, -60],
+        },
+      ],
       options: {
         chart: {
-         stacked: true,
-         type: "bar",
-         height: 250,
+          stacked: true,
+          type: "bar",
+          height: 250,
           borderRadius: 5,
           toolbar: {
             show: false,
           },
-       },
-       grid: {
-         borderColor: "#f2f6f7",
-       },
-       colors: ['var(--primary-bg-color)' || 'var(--primary-bg-color)', "#e4e7ed"],
+        },
+        grid: {
+          borderColor: "#f2f6f7",
+        },
+        colors: [
+          "var(--primary-bg-color)" || "var(--primary-bg-color)",
+          "#e4e7ed",
+        ],
         plotOptions: {
-         bar: {
-          
-           colors: {
-             ranges: [
-               {
-                 from: -100,
-                 borderRadius: 5,
-                 to: -46,
-                 color: "#ebeff5",
-               },
-               {
-                 from: -45,
-                 borderRadius: 5,
-                 to: 0,
-                 color: "#ebeff5",
-               },
-             ],
-           },
-           columnWidth: "25%",
-         },
-       },
+          bar: {
+            colors: {
+              ranges: [
+                {
+                  from: -100,
+                  borderRadius: 5,
+                  to: -46,
+                  color: "#ebeff5",
+                },
+                {
+                  from: -45,
+                  borderRadius: 5,
+                  to: 0,
+                  color: "#ebeff5",
+                },
+              ],
+            },
+            columnWidth: "25%",
+          },
+        },
         dataLabels: {
           enabled: false,
         },
         legend: {
-         show: true,
-         position: "top",
-       },
+          show: true,
+          position: "top",
+        },
       },
       yaxis: {
-         title: {
-           style: {
-             color: "#adb5be",
-             fontSize: "14px",
-             fontFamily: "poppins, sans-serif",
-             fontWeight: 600,
-             cssClass: "apexcharts-yaxis-label",
-           },
-         },
-         labels: {
-           formatter: function (y) {
-             return y.toFixed(0) + "";
-           },
-         },
-       },
-       xaxis: {
-         type: "day",
-         categories: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "sat"],
-         axisBorder: {
-           show: true,
-           color: "rgba(119, 119, 142, 0.05)",
-           offsetX: 0,
-           offsetY: 0,
-         },
-         axisTicks: {
-           show: true,
-           borderType: "solid",
-           color: "rgba(119, 119, 142, 0.05)",
-           width: 6,
-           offsetX: 0,
-           offsetY: 0,
-         },
-        
-         labels: {
-           rotate: -90,
-         },
-       },
+        title: {
+          style: {
+            color: "#adb5be",
+            fontSize: "14px",
+            fontFamily: "poppins, sans-serif",
+            fontWeight: 600,
+            cssClass: "apexcharts-yaxis-label",
+          },
+        },
+        labels: {
+          formatter: function (y) {
+            return y.toFixed(0) + "";
+          },
+        },
+      },
+      xaxis: {
+        type: "day",
+        categories: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "sat"],
+        axisBorder: {
+          show: true,
+          color: "rgba(119, 119, 142, 0.05)",
+          offsetX: 0,
+          offsetY: 0,
+        },
+        axisTicks: {
+          show: true,
+          borderType: "solid",
+          color: "rgba(119, 119, 142, 0.05)",
+          width: 6,
+          offsetX: 0,
+          offsetY: 0,
+        },
+
+        labels: {
+          rotate: -90,
+        },
+      },
     };
   }
 
   render() {
     return (
       <div id="chart">
-        <ReactApexChart options={this.state.options} series={this.state.series} type="bar" height={260} />
+        <ReactApexChart
+          options={this.state.options}
+          series={this.state.series}
+          type="bar"
+          height={260}
+        />
       </div>
     );
   }
@@ -494,30 +506,33 @@ export class Viewers1 extends React.Component {
 
     this.state = {
       series: [
-         {
-           name: "Male",
-           data: [51, 44, 55, 42, 58, 50, 62],
-         },
-         {
-           name: "Female",
-           data: [56, 58, 38, 50, 64, 45, 55],
-         },
-       ],
+        {
+          name: "Male",
+          data: [51, 44, 55, 42, 58, 50, 62],
+        },
+        {
+          name: "Female",
+          data: [56, 58, 38, 50, 64, 45, 55],
+        },
+      ],
       options: {
         chart: {
-        height: 270,
-        type: "line",
-        toolbar: {
-          show: false,
+          height: 270,
+          type: "line",
+          toolbar: {
+            show: false,
+          },
+          background: "none",
+          fill: "#fff",
         },
-        background: "none",
-        fill: "#fff",
-      },
         grid: {
           borderColor: "#f2f6f7",
         },
-        colors: ['var(--primary-bg-color)' || 'var(--primary-bg-color)', "#e4e7ed"],
-        
+        colors: [
+          "var(--primary-bg-color)" || "var(--primary-bg-color)",
+          "#e4e7ed",
+        ],
+
         background: "transparent",
         dataLabels: {
           enabled: false,
@@ -526,7 +541,6 @@ export class Viewers1 extends React.Component {
           curve: "straight",
           width: 2,
         },
-
 
         legend: {
           show: true,
@@ -573,13 +587,17 @@ export class Viewers1 extends React.Component {
   render() {
     return (
       <div id="chart">
-        <ReactApexChart options={this.state.options} series={this.state.series} type="line" height={270} />
+        <ReactApexChart
+          options={this.state.options}
+          series={this.state.series}
+          type="line"
+          height={270}
+        />
       </div>
     );
   }
 }
 //end
-
 
 //dashboard3
 export class Statistics3 extends React.Component {
@@ -587,30 +605,29 @@ export class Statistics3 extends React.Component {
     super(props);
 
     this.state = {
-
       series: [
         {
-           name: "active",
-           data: [44, 42, 57, 86, 58, 55, 70, 43, 23, 54, 77, 34],
-         },
-         {
-           name: "inactive",
-           data: [-34, -22, -37, -56, -21, -35, -60, -34, -56, -78, -89, -53],
-         },
+          name: "active",
+          data: [44, 42, 57, 86, 58, 55, 70, 43, 23, 54, 77, 34],
+        },
+        {
+          name: "inactive",
+          data: [-34, -22, -37, -56, -21, -35, -60, -34, -56, -78, -89, -53],
+        },
       ],
       options: {
         chart: {
           stacked: true,
           type: "bar",
           toolbar: {
-                   show: false,
-                 },
+            show: false,
+          },
           height: 350,
         },
         grid: {
           borderColor: "#f2f6f7",
         },
-        colors: ['var(--primary-bg-color)' || "#38cab3", "#e4e7ed"],
+        colors: ["var(--primary-bg-color)" || "#38CAB3", "#e4e7ed"],
         plotOptions: {
           bar: {
             colors: {
@@ -694,23 +711,23 @@ export class Statistics3 extends React.Component {
           },
         },
         fill: {
-          opacity: 1
+          opacity: 1,
         },
-
       },
-
-
     };
   }
-
-
 
   render() {
     return (
       <div id="chart">
-        <ReactApexChart options={this.state.options} series={this.state.series} type="bar" height={350} />
+        <ReactApexChart
+          options={this.state.options}
+          series={this.state.series}
+          type="bar"
+          height={350}
+        />
       </div>
-    )
+    );
   }
 }
 
@@ -719,17 +736,17 @@ export class Viewers3 extends React.Component {
     super(props);
     this.state = {
       series: [
-          {
-            name: "Male",
-            data: [44, 42, 57, 86, 58, 55, 70],
-            color: "#38cab3",
-          },
-          {
-            name: "Female",
-            data: [34, 22, 47, 56, 21, 35, 60],
-            color: "#ebeff5",
-          },
-        ],
+        {
+          name: "Male",
+          data: [44, 42, 57, 86, 58, 55, 70],
+          color: "#38CAB3",
+        },
+        {
+          name: "Female",
+          data: [34, 22, 47, 56, 21, 35, 60],
+          color: "#ebeff5",
+        },
+      ],
       options: {
         chart: {
           type: "bar",
@@ -742,7 +759,7 @@ export class Viewers3 extends React.Component {
         grid: {
           borderColor: "#eff2f6",
         },
-        colors: ['var(--primary-bg-color)' || "#38cab3", "#e4e7ed"],
+        colors: ["var(--primary-bg-color)" || "#38CAB3", "#e4e7ed"],
         dataLabels: {
           enabled: false,
         },
@@ -751,7 +768,7 @@ export class Viewers3 extends React.Component {
             horizontal: false,
             columnWidth: "30%",
           },
-        },  
+        },
         stroke: {
           show: true,
           width: 2,
@@ -770,60 +787,63 @@ export class Viewers3 extends React.Component {
         },
       },
       yaxis: {
-          title: {
-            style: {
-              color: "	#adb5be",
-              fontSize: "14px",
-              fontFamily: "poppins, sans-serif",
-              fontWeight: 600,
-              cssClass: "apexcharts-yaxis-label",
-            },
-          },
-          labels: {
-            formatter: function (y) {
-              return y.toFixed(0) + "";
-            },
+        title: {
+          style: {
+            color: "	#adb5be",
+            fontSize: "14px",
+            fontFamily: "poppins, sans-serif",
+            fontWeight: 600,
+            cssClass: "apexcharts-yaxis-label",
           },
         },
-        xaxis: {
-          categories: ["Mon", "Tue", "Web", "Thu", "Fri", "Sat", "Sun"],
-          axisBorder: {
-            show: true,
-            color: "rgba(119, 119, 142, 0.05)",
-            offsetX: 0,
-            offsetY: 0,
-          },
-          axisTicks: {
-            show: true,
-            borderType: "solid",
-            color: "rgba(119, 119, 142, 0.05)",
-            width: 6,
-            offsetX: 0,
-            offsetY: 0,
+        labels: {
+          formatter: function (y) {
+            return y.toFixed(0) + "";
           },
         },
-        fill: {
-          opacity: 1,
+      },
+      xaxis: {
+        categories: ["Mon", "Tue", "Web", "Thu", "Fri", "Sat", "Sun"],
+        axisBorder: {
+          show: true,
+          color: "rgba(119, 119, 142, 0.05)",
+          offsetX: 0,
+          offsetY: 0,
         },
-        legend: {
-          position: "top",
+        axisTicks: {
+          show: true,
+          borderType: "solid",
+          color: "rgba(119, 119, 142, 0.05)",
+          width: 6,
+          offsetX: 0,
+          offsetY: 0,
         },
+      },
+      fill: {
+        opacity: 1,
+      },
+      legend: {
+        position: "top",
+      },
     };
   }
 
   render() {
     return (
       <div id="chart">
-        <ReactApexChart options={this.state.options} series={this.state.series} type="bar" height={350} />
+        <ReactApexChart
+          options={this.state.options}
+          series={this.state.series}
+          type="bar"
+          height={350}
+        />
       </div>
     );
   }
 }
 //end
 
-
 //
-
 
 export const Linechart = {
   responsive: true,
@@ -884,7 +904,7 @@ export const linechartdata = {
     {
       label: "Amount",
       data: [2, 6, 12, 14, 20, 28, 30, 35, 45, 90, 10, 200],
-      borderColor: "#38cab3 ",
+      borderColor: "#38CAB3 ",
       borderWidth: 1,
 
       tension: 0.4,
@@ -901,32 +921,31 @@ export const linechartdata = {
 };
 // Bar-chart 1
 export const Barchart1 = {
-  
   responsive: true,
   scales: {
     x: {
       stacked: true,
       ticks: {
-        color: 'rgba(171, 167, 167,0.9)',
+        color: "rgba(171, 167, 167,0.9)",
       },
     },
     y: {
       stacked: true,
       ticks: {
-        color: 'rgba(171, 167, 167,0.9)',
+        color: "rgba(171, 167, 167,0.9)",
       },
     },
   },
   plugins: {
     legend: {
       labels: {
-          color: 'rgba(171, 167, 167,0.9)',
-      }
-    }
- }
+        color: "rgba(171, 167, 167,0.9)",
+      },
+    },
+  },
 };
 export const barchart1data = {
-  labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun",],
+  labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
   datasets: [
     {
       data: [10, 24, 20, 25, 35, 50],
@@ -961,24 +980,23 @@ export const Horizontalbarchart = {
     x: {
       stacked: true,
       ticks: {
-        color: 'rgba(171, 167, 167,0.9)',
+        color: "rgba(171, 167, 167,0.9)",
       },
     },
     y: {
       stacked: true,
       ticks: {
-        color: 'rgba(171, 167, 167,0.9)',
+        color: "rgba(171, 167, 167,0.9)",
       },
     },
   },
   plugins: {
     legend: {
       labels: {
-          color: 'rgba(171, 167, 167,0.9)',
-      }
-    }
- }
-  
+        color: "rgba(171, 167, 167,0.9)",
+      },
+    },
+  },
 };
 export const Horizontalbarchartdata = {
   labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
@@ -1004,31 +1022,30 @@ export const Horizontalbarchartdata = {
   ],
 };
 
-// Solid Color 
+// Solid Color
 export const SolidColor = {
-  
   responsive: true,
   scales: {
     x: {
       stacked: true,
       ticks: {
-        color: 'rgba(171, 167, 167,0.9)',
+        color: "rgba(171, 167, 167,0.9)",
       },
     },
     y: {
       stacked: true,
       ticks: {
-        color: 'rgba(171, 167, 167,0.9)',
+        color: "rgba(171, 167, 167,0.9)",
       },
     },
   },
   plugins: {
     legend: {
       labels: {
-          color: 'rgba(171, 167, 167,0.9)',
-      }
-    }
- }
+        color: "rgba(171, 167, 167,0.9)",
+      },
+    },
+  },
 };
 export const SolidColordata = {
   type: "bar",
@@ -1036,37 +1053,35 @@ export const SolidColordata = {
   datasets: [
     {
       data: [12, 39, 20, 10, 25, 18, 80],
-      backgroundColor: "#38cab3",
+      backgroundColor: "#38CAB3",
     },
   ],
 };
 
-
-// With Transparency 
+// With Transparency
 export const Transparency = {
-  
   responsive: true,
   scales: {
     x: {
       stacked: true,
       ticks: {
-        color: 'rgba(171, 167, 167,0.9)',
+        color: "rgba(171, 167, 167,0.9)",
       },
     },
     y: {
       stacked: true,
       ticks: {
-        color: 'rgba(171, 167, 167,0.9)',
+        color: "rgba(171, 167, 167,0.9)",
       },
     },
   },
   plugins: {
     legend: {
       labels: {
-          color: 'rgba(171, 167, 167,0.9)',
-      }
-    }
- }
+        color: "rgba(171, 167, 167,0.9)",
+      },
+    },
+  },
 };
 export const Transparencydata = {
   labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
@@ -1078,31 +1093,30 @@ export const Transparencydata = {
   ],
 };
 
-// Using Gradient Color 
+// Using Gradient Color
 export const GradientColor = {
- 
   responsive: true,
   scales: {
     x: {
       stacked: true,
       ticks: {
-        color: 'rgba(171, 167, 167,0.9)',
+        color: "rgba(171, 167, 167,0.9)",
       },
     },
     y: {
       stacked: true,
       ticks: {
-        color: 'rgba(171, 167, 167,0.9)',
+        color: "rgba(171, 167, 167,0.9)",
       },
     },
   },
   plugins: {
     legend: {
       labels: {
-          color: 'rgba(171, 167, 167,0.9)',
-      }
-    }
- }
+        color: "rgba(171, 167, 167,0.9)",
+      },
+    },
+  },
 };
 export const GradientColordata = {
   labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
@@ -1110,7 +1124,7 @@ export const GradientColordata = {
     {
       data: [12, 39, 20, 10, 25, 18],
       backgroundColor: "#41acb5",
-      hoverBackgroundColor: "#38cab3",
+      hoverBackgroundColor: "#38CAB3",
     },
   ],
 };
@@ -1125,8 +1139,8 @@ export const Horizontalbarchart1 = {
   plugins: {
     legend: {
       labels: {
-          color: 'rgba(171, 167, 167,0.9)',
-      }
+        color: "rgba(171, 167, 167,0.9)",
+      },
     },
     title: {
       display: true,
@@ -1136,24 +1150,32 @@ export const Horizontalbarchart1 = {
   scales: {
     x: {
       ticks: {
-        color: 'rgba(171, 167, 167,0.9)',
+        color: "rgba(171, 167, 167,0.9)",
       },
     },
     y: {
       ticks: {
-        color: 'rgba(171, 167, 167,0.9)',
+        color: "rgba(171, 167, 167,0.9)",
       },
     },
   },
- 
 };
 export const Horizontalbarchartdata1 = {
   labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
-  datasets: [{
-    label: '# of Votes',
-    data: [12, 39, 20, 10, 25, 18, 80],
-    backgroundColor: ['#6d26be', '#ffbd5a', '#38cab3', '#673ab7', '#ffc107', '#1a9c86']
-  }]
+  datasets: [
+    {
+      label: "# of Votes",
+      data: [12, 39, 20, 10, 25, 18, 80],
+      backgroundColor: [
+        "#6d26be",
+        "#ffbd5a",
+        "#38CAB3",
+        "#673ab7",
+        "#ffc107",
+        "#1a9c86",
+      ],
+    },
+  ],
 };
 export const Horizontalbarchart2 = {
   indexAxis: "y",
@@ -1166,8 +1188,8 @@ export const Horizontalbarchart2 = {
   plugins: {
     legend: {
       labels: {
-          color: 'rgba(171, 167, 167,0.9)',
-      }
+        color: "rgba(171, 167, 167,0.9)",
+      },
     },
     title: {
       display: true,
@@ -1177,27 +1199,26 @@ export const Horizontalbarchart2 = {
   scales: {
     x: {
       ticks: {
-        color: 'rgba(171, 167, 167,0.9)',
+        color: "rgba(171, 167, 167,0.9)",
       },
     },
     y: {
       ticks: {
-        color: 'rgba(171, 167, 167,0.9)',
+        color: "rgba(171, 167, 167,0.9)",
       },
     },
   },
- 
 };
 export const Horizontalbarchartdata2 = {
   labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
-  
+
   plugins: {
     legend: {
       labels: {
-          color: 'rgba(171, 167, 167,0.9)',
-      }
-    }
- },
+        color: "rgba(171, 167, 167,0.9)",
+      },
+    },
+  },
   datasets: [
     {
       data: [12, 39, 20, 10, 25, 18],
@@ -1223,10 +1244,10 @@ export const Piedata = {
   plugins: {
     legend: {
       labels: {
-          color: 'rgba(171, 167, 167,0.9)',
-      }
-    }
- },
+        color: "rgba(171, 167, 167,0.9)",
+      },
+    },
+  },
   datasets: [
     {
       data: [20, 20, 30, 5, 25],
@@ -1241,10 +1262,10 @@ export const Doughnutdata = {
   plugins: {
     legend: {
       labels: {
-          color: 'rgba(171, 167, 167,0.9)',
-      }
-    }
- },
+        color: "rgba(171, 167, 167,0.9)",
+      },
+    },
+  },
   datasets: [
     {
       data: [20, 20, 30, 5, 25],
@@ -1253,29 +1274,27 @@ export const Doughnutdata = {
   ],
 };
 
-
 export const Areachart = {
   responsive: true,
   scales: {
     x: {
       ticks: {
-        color: 'rgba(171, 167, 167,0.9)',
+        color: "rgba(171, 167, 167,0.9)",
       },
     },
     y: {
       ticks: {
-        color: 'rgba(171, 167, 167,0.9)',
+        color: "rgba(171, 167, 167,0.9)",
       },
     },
   },
   plugins: {
     legend: {
       labels: {
-          color: 'rgba(171, 167, 167,0.9)',
-      }
-    }
- }
-  
+        color: "rgba(171, 167, 167,0.9)",
+      },
+    },
+  },
 };
 //areachart
 export const areachart = {
@@ -1292,7 +1311,7 @@ export const areachart = {
     },
     {
       label: "Data 2",
-      borderColor: "#38cab3",
+      borderColor: "#38CAB3",
       borderWidth: "1",
       data: [22, 44, 67, 43, 76, 45, 12],
       fill: true,
@@ -1311,8 +1330,7 @@ export const areachart = {
       intersect: true,
     },
     scales: {
-      x:
-      {
+      x: {
         ticks: {
           fontColor: "#77778e",
         },
@@ -1321,8 +1339,7 @@ export const areachart = {
         },
       },
 
-      y:
-      {
+      y: {
         ticks: {
           beginAtZero: true,
           fontColor: "#77778e",
@@ -1334,260 +1351,280 @@ export const areachart = {
       plugins: {
         legend: {
           display: true,
-          position: 'bottom',
-          align: 'center',
+          position: "bottom",
+          align: "center",
           labels: {
-              color: 'rgba(171, 167, 167,0.9)',
-          }
-        }
-     }
-
+            color: "rgba(171, 167, 167,0.9)",
+          },
+        },
+      },
     },
-
   },
 };
 // end chartjs
-
 
 // apexcharts
 
 // Stacked Bar
 
 export class Apexcharts1 extends Component {
-  constructor (props) {
-    super(props)
+  constructor(props) {
+    super(props);
 
     this.state = {
-
-      series: [{
-        name: 'Data 1',
-        data: [44, 55, 41, 37, 22, 43, 21]
-      }, {
-        name: 'Data 2',
-        data: [53, 32, 33, 52, 13, 43, 32]
-      }, {
-        name: 'Data 3',
-        data: [12, 17, 11, 9, 15, 11, 20]
-      }, {
-        name: 'Data 4',
-        data: [9, 7, 5, 8, 6, 9, 4]
-      }, {
-        name: 'Data 5',
-        data: [25, 12, 19, 32, 25, 24, 10]
-      }],
+      series: [
+        {
+          name: "Data 1",
+          data: [44, 55, 41, 37, 22, 43, 21],
+        },
+        {
+          name: "Data 2",
+          data: [53, 32, 33, 52, 13, 43, 32],
+        },
+        {
+          name: "Data 3",
+          data: [12, 17, 11, 9, 15, 11, 20],
+        },
+        {
+          name: "Data 4",
+          data: [9, 7, 5, 8, 6, 9, 4],
+        },
+        {
+          name: "Data 5",
+          data: [25, 12, 19, 32, 25, 24, 10],
+        },
+      ],
       options: {
         dataLabels: {
-          enabled: false
+          enabled: false,
         },
         chart: {
-          type: 'bar',
+          type: "bar",
           height: 350,
-          stacked: true
+          stacked: true,
         },
         plotOptions: {
           bar: {
-            horizontal: true
-          }
+            horizontal: true,
+          },
         },
         stroke: {
           width: 1,
-          colors: ['#fff']
+          colors: ["#fff"],
         },
 
         xaxis: {
           categories: [2008, 2009, 2010, 2011, 2012, 2013, 2014],
           labels: {
             formatter: function (val) {
-              return val + 'K'
+              return val + "K";
             },
-            rotate: -90
-          }
+            rotate: -90,
+          },
         },
         yaxis: {
           title: {
-            text: undefined
-          }
+            text: undefined,
+          },
         },
         tooltip: {
           y: {
             formatter: function (val) {
-              return val + 'K'
-            }
-          }
+              return val + "K";
+            },
+          },
         },
         fill: {
-          opacity: 1
+          opacity: 1,
         },
         legend: {
-          position: 'top',
-          horizontalAlign: 'left',
-          offsetX: 40
-        }
-      }
-
-    }
+          position: "top",
+          horizontalAlign: "left",
+          offsetX: 40,
+        },
+      },
+    };
   }
 
-  render () {
+  render() {
     return (
- 
-              <ReactApexChart options={this.state.options} series={this.state.series} type="bar" height={300} />
- 
-
-    )
+      <ReactApexChart
+        options={this.state.options}
+        series={this.state.series}
+        type="bar"
+        height={300}
+      />
+    );
   }
-};
+}
 
 // AreaChart
 
 export class Apexcharts2 extends Component {
-  constructor (props) {
-    super(props)
+  constructor(props) {
+    super(props);
 
     this.state = {
-
       series: [
         {
-          name: 'South',
-          data: [120, 232, 301, 434, 290, 130, 410]
+          name: "South",
+          data: [120, 232, 301, 434, 290, 130, 410],
         },
         {
-          name: 'North',
-          data: [520, 432, 601, 634, 390, 330, 520]
+          name: "North",
+          data: [520, 432, 601, 634, 390, 330, 520],
         },
         {
-          name: 'Central',
-          data: [220, 182, 191, 234, 290, 330, 310]
-        }
+          name: "Central",
+          data: [220, 182, 191, 234, 290, 330, 310],
+        },
       ],
       options: {
         chart: {
-          type: 'area',
+          type: "area",
           height: 350,
-          stacked: true
-
+          stacked: true,
         },
-        colors: ['#f1b7c4', '#8a9ce4', '#c1c2f0'],
+        colors: ["#f1b7c4", "#8a9ce4", "#c1c2f0"],
         dataLabels: {
-          enabled: false
+          enabled: false,
         },
         stroke: {
-          curve: 'smooth'
+          curve: "smooth",
         },
         fill: {
-          type: 'gradient',
+          type: "gradient",
           gradient: {
             opacityFrom: 0.6,
-            opacityTo: 0.8
-          }
+            opacityTo: 0.8,
+          },
         },
         legend: {
-          position: 'bottom',
-          horizontalAlign: 'center'
-        }
-      }
-
-    }
+          position: "bottom",
+          horizontalAlign: "center",
+        },
+      },
+    };
   }
 
-  render () {
+  render() {
     return (
-
-          <div id="chart">
-              <ReactApexChart options={this.state.options} series={this.state.series} type="area" height={300} />
-          </div>
-    )
+      <div id="chart">
+        <ReactApexChart
+          options={this.state.options}
+          series={this.state.series}
+          type="area"
+          height={300}
+        />
+      </div>
+    );
   }
-};
+}
 
 // Mixed Line Column Area
 
 export class Apexcharts3 extends Component {
-  constructor (props) {
-    super(props)
+  constructor(props) {
+    super(props);
 
     this.state = {
-
-      series: [{
-        name: 'Data A',
-        type: 'column',
-        data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30],
-        color: '#f7557a'
-      }, {
-        name: 'Data B',
-        type: 'area',
-        data: [44, 55, 41, 67, 22, 43, 21, 41, 56, 27, 43],
-        color: '#285cf7'
-      }, {
-        name: 'Data C',
-        type: 'line',
-        data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39],
-        color: '#4ecc48'
-      }],
+      series: [
+        {
+          name: "Data A",
+          type: "column",
+          data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30],
+          color: "#f7557a",
+        },
+        {
+          name: "Data B",
+          type: "area",
+          data: [44, 55, 41, 67, 22, 43, 21, 41, 56, 27, 43],
+          color: "#285cf7",
+        },
+        {
+          name: "Data C",
+          type: "line",
+          data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39],
+          color: "#4ecc48",
+        },
+      ],
       options: {
         chart: {
           height: 350,
-          type: 'line',
-          stacked: false
+          type: "line",
+          stacked: false,
         },
         stroke: {
           width: [0, 2, 5],
-          curve: 'smooth'
+          curve: "smooth",
         },
         plotOptions: {
           bar: {
-            columnWidth: '50%'
-          }
+            columnWidth: "50%",
+          },
         },
 
         fill: {
           opacity: [0.85, 0.25, 1],
           gradient: {
             inverseColors: false,
-            shade: 'light',
-            type: 'vertical',
+            shade: "light",
+            type: "vertical",
             opacityFrom: 0.85,
             opacityTo: 0.55,
-            stops: [0, 100, 100, 100]
-          }
+            stops: [0, 100, 100, 100],
+          },
         },
-        labels: ['01/01/2003', '02/01/2003', '03/01/2003', '04/01/2003', '05/01/2003', '06/01/2003', '07/01/2003',
-          '08/01/2003', '09/01/2003', '10/01/2003', '11/01/2003'],
+        labels: [
+          "01/01/2003",
+          "02/01/2003",
+          "03/01/2003",
+          "04/01/2003",
+          "05/01/2003",
+          "06/01/2003",
+          "07/01/2003",
+          "08/01/2003",
+          "09/01/2003",
+          "10/01/2003",
+          "11/01/2003",
+        ],
 
         markers: {
-          size: 0
+          size: 0,
         },
         xaxis: {
-          type: 'datetime'
+          type: "datetime",
         },
         yaxis: {
-
-          min: 0
+          min: 0,
         },
         tooltip: {
           shared: true,
           intersect: false,
           y: {
             formatter: function (y) {
-              if (typeof y !== 'undefined') {
-                return y.toFixed(0) + ' points'
+              if (typeof y !== "undefined") {
+                return y.toFixed(0) + " points";
               }
-              return y
-            }
-          }
-        }
-      }
-    }
+              return y;
+            },
+          },
+        },
+      },
+    };
   }
 
-  render () {
+  render() {
     return (
-
-          <div id="chart">
-              <ReactApexChart options={this.state.options} series={this.state.series} type="line" height={350} />
-          </div>
-
-    )
+      <div id="chart">
+        <ReactApexChart
+          options={this.state.options}
+          series={this.state.series}
+          type="line"
+          height={350}
+        />
+      </div>
+    );
   }
 }
 
@@ -1596,67 +1633,66 @@ export class Apexcharts4 extends Component {
     super(props);
 
     this.state = {
-    
-      series: [21, 65, 33, 43,59,63],
-           
+      series: [21, 65, 33, 43, 59, 63],
+
       options: {
         chart: {
           width: 380,
-          type: 'pie',
+          type: "pie",
         },
-        labels: ['Team A', 'Team B', 'Team C', 'Team D', 'Team E'],
-        responsive: [{
-          breakpoint:400,
-          options: {
-            chart: {
-             width:250
+        labels: ["Team A", "Team B", "Team C", "Team D", "Team E"],
+        responsive: [
+          {
+            breakpoint: 400,
+            options: {
+              chart: {
+                width: 250,
+              },
             },
-          }
-        },
-        {
-          breakpoint: 480,
-          options: {
-            chart: {
-             width:300,
+          },
+          {
+            breakpoint: 480,
+            options: {
+              chart: {
+                width: 300,
+              },
             },
-          }
-        },
-        {
-          breakpoint:1004,
-          options: {
-            chart: {
-             width:280
+          },
+          {
+            breakpoint: 1004,
+            options: {
+              chart: {
+                width: 280,
+              },
             },
-          }
-        },
-        {
-          breakpoint:1024,
-          options: {
-            chart: {
-             width:300
+          },
+          {
+            breakpoint: 1024,
+            options: {
+              chart: {
+                width: 300,
+              },
             },
-          }
-        },]
+          },
+        ],
       },
-    
-    
     };
   }
 
-
-
   render() {
     return (
-      
-<div id="chart">
-<ReactApexChart options={this.state.options} series={this.state.series} type="pie" width={380} />
-</div>
-
+      <div id="chart">
+        <ReactApexChart
+          options={this.state.options}
+          series={this.state.series}
+          type="pie"
+          width={380}
+        />
+      </div>
     );
   }
 }
 //end apexchart
-
 
 //echarts
 
@@ -1730,7 +1766,7 @@ export const echart1 = {
         type: "bar",
         barMaxWidth: 20,
         data: [10, 15, 9, 18, 10, 15],
-        color: "#38cab3",
+        color: "#38CAB3",
       },
       {
         name: "growth",
@@ -1788,14 +1824,14 @@ export const echart2 = {
         color: "#5f6d7a",
       },
     },
-    color: ["#38cab3", "#f74f75"],
+    color: ["#38CAB3", "#f74f75"],
     series: [
       {
         name: "sales",
         type: "line",
         smooth: true,
         data: [10, 15, 9, 18, 10, 15],
-        color: ["#38cab3"],
+        color: ["#38CAB3"],
       },
       {
         name: "Profit",
@@ -1839,7 +1875,7 @@ export const echart3 = {
         type: "value",
       },
     ],
-    color: ["#38cab3", "#f74f75"],
+    color: ["#38CAB3", "#f74f75"],
     series: [
       {
         name: "sales",
@@ -1875,14 +1911,14 @@ export const echart4 = {
         data: ["2014", "2015", "2016", "2017", "2018", "2019"],
       },
     ],
-    color: ["#38cab3", "#f74f75"],
+    color: ["#38CAB3", "#f74f75"],
     series: [
       {
         name: "sales",
         type: "line",
         smooth: true,
         data: [10, 15, 9, 18, 10, 15],
-        color: ["#38cab3"],
+        color: ["#38CAB3"],
       },
       {
         name: "Profit",
@@ -1936,7 +1972,7 @@ export const echart5 = {
         color: "#5f6d7a",
       },
     },
-    color: ["#f74f75", "#38cab3"],
+    color: ["#f74f75", "#38CAB3"],
     series: [
       {
         name: "sales",
@@ -2014,7 +2050,7 @@ export const echart6 = {
         type: "bar",
         stack: "total",
         data: [25, 32, 35, 64, 52, 45, 35, 34, 54],
-        color: "#38cab3",
+        color: "#38CAB3",
       },
     ],
   },
@@ -2117,7 +2153,7 @@ export const echart8 = {
         type: "line",
         smooth: true,
         data: [5, 15, 9, 18, 10, 15],
-        color: "#38cab3",
+        color: "#38CAB3",
       },
     ],
   },
@@ -2216,7 +2252,7 @@ export const echart9 = {
         },
       },
     ],
-    color: ["#38cab3", "#f74f75"],
+    color: ["#38CAB3", "#f74f75"],
     series: [
       {
         name: "View Price",

@@ -4,20 +4,20 @@
   .card {
     color: #fff !important;
   }
-  .table td{
+  .table td {
     color: #fff !important;
   }
-  .table th{
+  .table th {
     color: #fff !important;
   }
   .apexcharts-gridline {
-    stroke: rgba(255,255,255,0.05);
+    stroke: rgba(255, 255, 255, 0.05);
   }
-  .optiondots .btn{
-    color:$white !important;
-    border: 1px solid rgba(255,255,255,0.1) !important;
+  .optiondots .btn {
+    color: $white !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
   }
-  
+
   .main-sidebar-header {
     backdrop-filter: blur(15px) !important;
   }
@@ -39,9 +39,9 @@
   }
   .rmsc {
     --rmsc-main: #000;
-    --rmsc-selected: #38cab3;
-    --rmsc-hover: #38cab3;
-    --rmsc-bg: #38cab3;
+    --rmsc-selected: #38CAB3;
+    --rmsc-hover: #38CAB3;
+    --rmsc-bg: #38CAB3;
     --rmsc-gray: #fff;
   }
   // .MuiTreeItem-iconContainer {
@@ -53,16 +53,17 @@
   //   color:$white
   // }
 
-  .MuiSlider-markLabel, .dark-theme .MuiSlider-valueLabelLabel {
+  .MuiSlider-markLabel,
+  .dark-theme .MuiSlider-valueLabelLabel {
     color: $dark-color !important;
   }
   .border-bottom {
     border-bottom: 1px solid rgba(234, 236, 241, 0.2) !important;
-    }
-    .border-0 {
+  }
+  .border-0 {
     border: 0 !important;
-    }
-  .selectpage{
+  }
+  .selectpage {
     background: $transparent-theme;
     color: #fff;
   }
@@ -84,11 +85,10 @@
       border: 1px solid $transparent-border;
     }
   }
- 
 }
 
-  /* ###### globalTransparenttheme  ###### */
-  
+/* ###### globalTransparenttheme  ###### */
+
 .transparent-theme {
   .tablebutton {
     background-color: rgba(255, 255, 255, 0.1);
@@ -116,7 +116,7 @@
     background: rgba(0, 0, 0, 0.1) !important;
   }
   .Select2__placeholder {
-    color: rgba(255,255,255,0.5) !important;
+    color: rgba(255, 255, 255, 0.5) !important;
   }
   .PhoneInputCountry {
     background: transparent;
@@ -133,7 +133,7 @@
     background-color: transparent;
     color: #fff !important;
     &::-webkit-input-placeholder {
-      color: rgba(255,255,255,0.2);
+      color: rgba(255, 255, 255, 0.2);
     }
   }
 
@@ -155,27 +155,27 @@
   }
   .rti--container {
     --rti-bg: none;
-    border-color: rgba(255,255,255,0.1) !important;
-  } 
+    border-color: rgba(255, 255, 255, 0.1) !important;
+  }
   .Select2__control {
     background-color: transparent !important;
     color: #fff;
-    border-color: rgba(255,255,255,0.1) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
   }
   .tabs-style-4 .nav .nav-item a {
-    background-color: rgba(255,255,255,0.1);
+    background-color: rgba(255, 255, 255, 0.1);
     color: #fff;
-    border-color: rgba(255,255,255,0.1);
+    border-color: rgba(255, 255, 255, 0.1);
     &:is(.active, :hover) {
-      background-color:  $primary !important;
+      background-color: $primary !important;
     }
   }
   .tabs-style-3 .nav.panel-tabs li button {
-    background-color: rgba(255,255,255,0.1);
+    background-color: rgba(255, 255, 255, 0.1);
     color: #fff;
-    border-color: rgba(255,255,255,0.1);
+    border-color: rgba(255, 255, 255, 0.1);
     &:is(.active, :hover) {
-      background-color:  $primary !important;
+      background-color: $primary !important;
     }
   }
   .accordion-item {
@@ -187,7 +187,7 @@
     color: #fff;
   }
   .accordiondclose .accordion-header button {
-    border: 1px solid rgba(255,255,255,0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
   }
   .accordion-button:not(.collapsed) {
     color: #fff !important;
@@ -206,10 +206,10 @@
     border-inline-end: 0px solid rgba(255, 255, 255, 0.1);
   }
   .Basicwizard {
-    border-block-start: 1px solid rgba(255,255,255,0.1);
-    border-block-end: 1px solid rgba(255,255,255,0.1);
+    border-block-start: 1px solid rgba(255, 255, 255, 0.1);
+    border-block-end: 1px solid rgba(255, 255, 255, 0.1);
   }
-  .steps.bordera .btn{
+  .steps.bordera .btn {
     &:not(.active) {
       i {
         color: #fff;
@@ -217,11 +217,11 @@
     }
   }
   #accordion11 .panel-heading2 button {
-    background: rgba(255,255,255,0.1) !important;
+    background: rgba(255, 255, 255, 0.1) !important;
     color: #fff !important;
   }
   .border-top {
-    border-top: 1px solid rgba(255,255,255, 0.1)!important;
+    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
   }
   .transparent-theme .border-bottom {
     border-bottom: 1px solid rgba(234, 236, 241, 0.2) !important;
@@ -230,8 +230,8 @@
     color: #fff;
   }
   .main-chat-list .media.selected {
-    border-block-start-color: rgba(255,255,255, 0.1);
-    border-block-end-color: rgba(255,255,255, 0.1);
+    border-block-start-color: rgba(255, 255, 255, 0.1);
+    border-block-end-color: rgba(255, 255, 255, 0.1);
   }
   .productdesc {
     .tabs-menu1 .nav-tabs {
@@ -239,16 +239,17 @@
         background-color: $primary;
         color: #fff !important;
         &:not(.avtive) {
-          background-color: rgba(255,255,255,0.05);
+          background-color: rgba(255, 255, 255, 0.05);
         }
       }
-    } 
+    }
   }
   #checkoutsteps .wizard-wrapper {
     border: 1px solid rgba(255, 255, 255, 0.1);
   }
-  .onoffswitch2-checkbox:checked + .onoffswitch-label2, .onoffswitch2-checkbox:checked + .onoffswitch2-label:before {
-    background-color: #38cab3;
+  .onoffswitch2-checkbox:checked + .onoffswitch-label2,
+  .onoffswitch2-checkbox:checked + .onoffswitch2-label:before {
+    background-color: #38CAB3;
   }
   .main-signup-header .form-control {
     color: #14112d;
@@ -260,7 +261,7 @@
     border-color: rgba(255, 255, 255, 0.15) !important;
   }
   .bordera {
-    border-right: 1px solid rgba(255,255,255,0.1)
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
   }
   .sun-editor {
     background-color: rgba(0, 0, 0, 0.2) !important;
@@ -285,7 +286,6 @@
       border-top: 1px solid rgba(255, 255, 255, 0.15);
       background-color: rgba(0, 0, 0, 0.2);
     }
-    
   }
   .sun-editor-editable {
     background-color: rgba(0, 0, 0, 0.2) !important;
@@ -299,7 +299,7 @@
     color: #fff;
   }
 
-  .productdesc .tabs-menu1 .nav-tabs  .nav-link.active {
+  .productdesc .tabs-menu1 .nav-tabs .nav-link.active {
     border-block-end: 2px solid $primary !important;
     background-color: transparent !important;
     border-inline-end-color: transparent !important;

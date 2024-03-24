@@ -1,62 +1,61 @@
-import React ,{ useState , Fragment }from 'react';
-import { Card, Col, Form, Row, Table } from 'react-bootstrap';
+import React, { useState, Fragment } from "react";
+import { Card, Col, Form, Row, Table } from "react-bootstrap";
 import Swal from "sweetalert2";
-import { imagesData } from '../../../common/commonimages';
-import Pageheader from '../../../layout/layoutcomponent/pageheader';
+import { imagesData } from "../../../common/commonimages";
+import Pageheader from "../../../layout/layoutcomponent/pageheader";
 
 const Sweetalert = () => {
-  const [title, settitle] = useState('Your message');
-  const [message, setmessage] = useState('Your message');
+  const [title, settitle] = useState("Your message");
+  const [message, setmessage] = useState("Your message");
 
-    //Primaryalertbutton
-    function Primaryalertbutton() {
-      Swal.fire({
-          text:message,
-          allowOutsideClick: false,
-          confirmButtonText: "ok",
-          cancelButtonColor: "#38cab3",
-      });
+  //Primaryalertbutton
+  function Primaryalertbutton() {
+    Swal.fire({
+      text: message,
+      allowOutsideClick: false,
+      confirmButtonText: "ok",
+      cancelButtonColor: "#38CAB3",
+    });
   }
   //Secondaryalertbutton
   function Secondaryalertbutton() {
-      Swal.fire({
-          title: message,
-          text: title,
-          allowOutsideClick: false,
-          confirmButtonText: "ok",
-          cancelButtonColor: "#38cab3",
-      });
+    Swal.fire({
+      title: message,
+      text: title,
+      allowOutsideClick: false,
+      confirmButtonText: "ok",
+      cancelButtonColor: "#38CAB3",
+    });
   }
   //Infoalertbutton with images
   function Infoalertbutton() {
-      Swal.fire({
-          title: title,
-          text: message,
-          imageUrl: imagesData('favicon'),
-          imageWidth: 80,
-          imageHeight: 80,
-          imageAlt: "Custom image",
-      });
+    Swal.fire({
+      title: title,
+      text: message,
+      imageUrl: imagesData("favicon"),
+      imageWidth: 80,
+      imageHeight: 80,
+      imageAlt: "Custom image",
+    });
   }
 
   //Warningalertbutton
   function Warningalertbutton() {
-      Swal.fire({
-          title: message,
-          allowOutsideClick: false,
-          text: "Your message(close after 2seconds)",
-          showConfirmButton: false,
-          timer: 2000,
-      });
+    Swal.fire({
+      title: message,
+      allowOutsideClick: false,
+      text: "Your message(close after 2seconds)",
+      showConfirmButton: false,
+      timer: 2000,
+    });
   }
-
 
   function Basic() {
     Swal.fire({
       title: "Welcome to Your Admin Page",
       allowOutsideClick: false,
       confirmButtonText: "ok",
-      cancelButtonColor: "#38cab3",
+      cancelButtonColor: "#38CAB3",
     });
   }
   function Title() {
@@ -64,7 +63,7 @@ const Sweetalert = () => {
       title: "Here is  a title!",
       allowOutsideClick: false,
       confirmButtonText: "ok",
-      cancelButtonColor: "#38cab3",
+      cancelButtonColor: "#38CAB3",
       text: "All are available in the template",
     });
   }
@@ -75,7 +74,7 @@ const Sweetalert = () => {
       icon: "success",
       allowOutsideClick: false,
       confirmButtonText: "ok",
-      cancelButtonColor: "#38cab3",
+      cancelButtonColor: "#38CAB3",
       text: "You clicked the button!",
     });
   }
@@ -137,7 +136,7 @@ const Sweetalert = () => {
     Swal.fire({
       title: "Sweet!",
       text: "Modal with a custom image.",
-      imageUrl: imagesData('female6'),
+      imageUrl: imagesData("female6"),
       imageWidth: 80,
       imageHeight: 80,
       imageAlt: "Custom image",
@@ -199,12 +198,15 @@ const Sweetalert = () => {
         });
       }
     });
-  }
+  };
   return (
     <Fragment>
-     <Pageheader title="SWEET ALERT"  heading="Advanced UI"   active="Sweet alert" />
+      <Pageheader
+        title="SWEET ALERT"
+        heading="Advanced UI"
+        active="Sweet alert"
+      />
 
-   
       <Row className="row-deck">
         <Col sm={12} md={12} lg={12} xl={12}>
           <Card>
@@ -212,69 +214,73 @@ const Sweetalert = () => {
               <h3 className="card-title">Basic Sweet-alert</h3>
             </Card.Header>
             <Card.Body className=" pt-0">
-            <Table className="table card-table border">
-            <tbody>
-                <tr>
+              <Table className="table card-table border">
+                <tbody>
+                  <tr>
                     <td>
-                        <Form.Label>Title</Form.Label>
-                        <Form.Control
-                            type="text"
-                            className="form-control"
-                            placeholder="Title text"
-                            id="title"
-                            onChange={(ele) => { settitle(ele.target.value); }}
-                        />
+                      <Form.Label>Title</Form.Label>
+                      <Form.Control
+                        type="text"
+                        className="form-control"
+                        placeholder="Title text"
+                        id="title"
+                        onChange={(ele) => {
+                          settitle(ele.target.value);
+                        }}
+                      />
                     </td>
-                </tr>
-                <tr>
+                  </tr>
+                  <tr>
                     <td className="bd-t-0 pt-1">
-                        <Form.Label className="mt-0">Message</Form.Label>
-                        <Form.Control
-                            type="text"
-                            className="form-control"
-                            placeholder="Your message"
-                            id="message"
-                            onChange={(ele) => { setmessage(ele.target.value); }}
-                        />
+                      <Form.Label className="mt-0">Message</Form.Label>
+                      <Form.Control
+                        type="text"
+                        className="form-control"
+                        placeholder="Your message"
+                        id="message"
+                        onChange={(ele) => {
+                          setmessage(ele.target.value);
+                        }}
+                      />
                     </td>
-                </tr>
-                <tr>
+                  </tr>
+                  <tr>
                     <td className="mt-5  bd-t-0">
-                        <input
-                            type="button"
-                            className="btn btn-primary mt-2"
-                            value="Simple alert"
-                            id="but1"
-                            onClick={Primaryalertbutton}
-                        />
-                        &nbsp;
-                        <input
-                            type="button"
-                            className="btn btn-danger mt-2"
-                            value="Alert with title"
-                            id="but2"
-                            onClick={Secondaryalertbutton}
-                        />
-                        &nbsp;
-                        <input
-                            type="button"
-                            className="btn btn-info mt-2"
-                            value="Alert with image"
-                            id="but3"
-                            onClick={Infoalertbutton}
-                        />
-                        &nbsp;
-                        <input
-                            type="button"
-                            className="btn btn-warning mt-2"
-                            value="With timer"
-                            id="but4"
-                            onClick={Warningalertbutton}
-                        />
+                      <input
+                        type="button"
+                        className="btn btn-primary mt-2"
+                        value="Simple alert"
+                        id="but1"
+                        onClick={Primaryalertbutton}
+                      />
+                      &nbsp;
+                      <input
+                        type="button"
+                        className="btn btn-danger mt-2"
+                        value="Alert with title"
+                        id="but2"
+                        onClick={Secondaryalertbutton}
+                      />
+                      &nbsp;
+                      <input
+                        type="button"
+                        className="btn btn-info mt-2"
+                        value="Alert with image"
+                        id="but3"
+                        onClick={Infoalertbutton}
+                      />
+                      &nbsp;
+                      <input
+                        type="button"
+                        className="btn btn-warning mt-2"
+                        value="With timer"
+                        id="but4"
+                        onClick={Warningalertbutton}
+                      />
                     </td>
-                </tr>
-            </tbody>
-        </Table>
+                  </tr>
+                </tbody>
+              </Table>
             </Card.Body>
           </Card>
         </Col>
@@ -357,7 +363,7 @@ const Sweetalert = () => {
         <Col xl={3} lg={4} md={6} sm={6}>
           <Card className="custom-card text-center">
             <Card.Body>
-              <div className='parameteralert'>
+              <div className="parameteralert">
                 <h6 className="card-title mb-1">Passing a parameter alert</h6>
                 <p className="text-muted card-sub-title">
                   By passing a parameter
@@ -433,5 +439,5 @@ const Sweetalert = () => {
       </Row>
     </Fragment>
   );
-}
+};
 export default Sweetalert;

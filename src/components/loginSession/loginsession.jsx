@@ -6,7 +6,8 @@ export default async function LoginSession(
   setUserInfo = () => {},
   navigate,
   setWalletData = () => {},
-  setInvestments = () => {}
+  setInvestments = () => {},
+  setDepositsData = () => {}
 ) {
   try {
     const loginSessionResponse = await axiosInstance.get("/login-session", {
@@ -41,6 +42,7 @@ export default async function LoginSession(
         }
       );
 
+      fetchData(setDepositsData);
       // console.log("this is", investments.data.investments);
       setInvestments(investments.data.investments);
     } else {
@@ -52,6 +54,21 @@ export default async function LoginSession(
   }
 }
 
+const fetchData = async (setDepositsData) => {
+  try {
+    const getAllAddedFunds = await axiosInstance.get("/get-deposits", {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    // console.log("mod", modifiedFunds);
+    // console.log(getAllAddedFunds);
+    setDepositsData(getAllAddedFunds.data.funds);
+  } catch (err) {
+    console.log(err);
+  }
+};
 
 export const GetFirstName = (fullName) => {
   // Check if fullName is defined before trying to split

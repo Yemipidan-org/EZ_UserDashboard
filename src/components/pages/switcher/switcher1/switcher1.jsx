@@ -8,7 +8,7 @@ import Pageheader from "../../../../layout/layoutcomponent/pageheader";
 export const Switcher1 = () => {
   useEffect(() => {
     Switcherdata.localStorageBackUp();
-  },[]);
+  }, []);
 
   function changePrimaryColor() {
     var userColor = document.getElementById("colorID").value;
@@ -42,7 +42,7 @@ export const Switcher1 = () => {
     localStorage.removeItem("transparentBgColor");
     localStorage.removeItem("transparent-bgImgPrimaryColor");
     localStorage.removeItem("BgImage");
-    localStorage.removeItem("nowatransparent")
+    localStorage.removeItem("nowatransparent");
 
     Switcherdata.name();
   }
@@ -80,7 +80,7 @@ export const Switcher1 = () => {
     localStorage.removeItem("transparentBgColor");
     localStorage.removeItem("transparent-bgImgPrimaryColor");
     localStorage.removeItem("BgImage");
-    localStorage.removeItem("nowatransparent")
+    localStorage.removeItem("nowatransparent");
 
     Switcherdata.name();
   }
@@ -164,7 +164,6 @@ export const Switcher1 = () => {
     Switcherdata.name();
   }
   function BgImgTransparentPrimaryColor() {
-      
     var userColor = document.getElementById(
       "transparentBgImgPrimaryColorID"
     ).value;
@@ -206,30 +205,28 @@ export const Switcher1 = () => {
     document.querySelector("html").style.removeProperty("--transparent-body");
 
     if (
-      document.querySelector("body")?.classList.contains("bg-img1") ===
-        false &&
-      document.querySelector("body")?.classList.contains("bg-img2") ===
-        false &&
-      document.querySelector("body")?.classList.contains("bg-img3") ===
-        false &&
+      document.querySelector("body")?.classList.contains("bg-img1") === false &&
+      document.querySelector("body")?.classList.contains("bg-img2") === false &&
+      document.querySelector("body")?.classList.contains("bg-img3") === false &&
       document.querySelector("body")?.classList.contains("bg-img4") === false
     ) {
       document.querySelector("body")?.classList.add("bg-img1");
       localStorage.setItem("nowaBgImage", "bg-img1");
     }
     Switcherdata.name();
-    
   }
   return (
     <Fragment>
-       <Pageheader title="SWITCHER PAGE"  heading="Pages"   active="Switcher Page" />
+      <Pageheader
+        title="SWITCHER PAGE"
+        heading="Pages"
+        active="Switcher Page"
+      />
 
-      
       <div className="container p-0 p-sm-5 py-4">
         <Row>
           <Col sm={12} md={12} lg={3}></Col>
           <Col sm={12} md={12} lg={6}>
-           
             <div className="switcher-wrapper">
               <div className="bg-white">
                 <div className="form_holder sidebar-right1">
@@ -363,7 +360,7 @@ export const Switcher1 = () => {
                               <div className="">
                                 <input
                                   className="wd-25 ht-25 input-color-picker color-primary-light"
-                                  defaultValue="#38cab3"
+                                  defaultValue="#38CAB3"
                                   id="colorID"
                                   onInput={() => changePrimaryColor()}
                                   type="color"
@@ -403,7 +400,7 @@ export const Switcher1 = () => {
                               <div className="">
                                 <input
                                   className="wd-25 ht-25 input-dark-color-picker color-primary-dark"
-                                  defaultValue="#38cab3"
+                                  defaultValue="#38CAB3"
                                   id="darkPrimaryColorID"
                                   onInput={() => darkPrimaryColor()}
                                   type="color"
@@ -446,7 +443,7 @@ export const Switcher1 = () => {
                               <div className="">
                                 <input
                                   className="wd-30 ht-30 input-transparent-color-picker color-primary-transparent"
-                                  defaultValue="#38cab3"
+                                  defaultValue="#38CAB3"
                                   id="transparentPrimaryColorID"
                                   onInput={() => transparentPrimaryColor()}
                                   type="color"
@@ -467,7 +464,7 @@ export const Switcher1 = () => {
                               <div className="">
                                 <input
                                   className="wd-30 ht-30 input-transparent-color-picker color-bg-transparent"
-                                  defaultValue="#38cab3"
+                                  defaultValue="#38CAB3"
                                   id="transparentBgColorID"
                                   onInput={() => BgTransparentBackground()}
                                   type="color"
@@ -490,7 +487,7 @@ export const Switcher1 = () => {
                               <div className="">
                                 <input
                                   className="wd-30 ht-30 input-transparent-color-picker color-primary-transparent"
-                                  defaultValue="#38cab3"
+                                  defaultValue="#38CAB3"
                                   id="transparentBgImgPrimaryColorID"
                                   onInput={() => BgImgTransparentPrimaryColor()}
                                   type="color"
@@ -511,7 +508,7 @@ export const Switcher1 = () => {
                                 onClick={() => Switcherdata.bgimage1()}
                               >
                                 <img
-                                  src={imagesData('bgimg1')}
+                                  src={imagesData("bgimg1")}
                                   id="bgimage1"
                                   alt="switch-img"
                                   className="br-5 me-2 mb-2"
@@ -523,7 +520,7 @@ export const Switcher1 = () => {
                                 onClick={() => Switcherdata.bgimage2()}
                               >
                                 <img
-                                  src={imagesData('bgimg2')}
+                                  src={imagesData("bgimg2")}
                                   id="bgimage2"
                                   alt="switch-img"
                                   className="br-5 me-2 mb-2"
@@ -535,7 +532,7 @@ export const Switcher1 = () => {
                                 onClick={() => Switcherdata.bgimage3()}
                               >
                                 <img
-                                  src={imagesData('bgimg3')}
+                                  src={imagesData("bgimg3")}
                                   id="bgimage3"
                                   alt="switch-img"
                                   className="br-5 me-2 mb-2"
@@ -547,7 +544,7 @@ export const Switcher1 = () => {
                                 onClick={() => Switcherdata.bgimage4()}
                               >
                                 <img
-                                  src={imagesData('bgimg4')}
+                                  src={imagesData("bgimg4")}
                                   id="bgimage4"
                                   alt="switch-img"
                                   className="br-5 me-2 mb-2"
@@ -568,7 +565,7 @@ export const Switcher1 = () => {
                                   type="radio"
                                   name="onoffswitch2"
                                   id="myonoffswitch3"
-                                    onClick={() => Switcherdata.LightMenu()}
+                                  onClick={() => Switcherdata.LightMenu()}
                                   className="onoffswitch2-checkbox"
                                   defaultChecked
                                 />
@@ -585,7 +582,7 @@ export const Switcher1 = () => {
                                   type="radio"
                                   name="onoffswitch2"
                                   id="myonoffswitch4"
-                                    onClick={() => Switcherdata.ColorMenu()}
+                                  onClick={() => Switcherdata.ColorMenu()}
                                   className="onoffswitch2-checkbox"
                                 />
                                 <label
@@ -601,7 +598,7 @@ export const Switcher1 = () => {
                                   type="radio"
                                   name="onoffswitch2"
                                   id="myonoffswitch5"
-                                    onClick={() => Switcherdata.DarkMenu()}
+                                  onClick={() => Switcherdata.DarkMenu()}
                                   className="onoffswitch2-checkbox"
                                 />
                                 <label
@@ -617,7 +614,7 @@ export const Switcher1 = () => {
                                   type="radio"
                                   name="onoffswitch2"
                                   id="myonoffswitch25"
-                                    onClick={() => Switcherdata.GradientMenu()}
+                                  onClick={() => Switcherdata.GradientMenu()}
                                   className="onoffswitch2-checkbox"
                                 />
                                 <label
@@ -640,7 +637,7 @@ export const Switcher1 = () => {
                                   type="radio"
                                   name="onoffswitch3"
                                   id="myonoffswitch6"
-                                    onClick={() => Switcherdata.Lightheader()}
+                                  onClick={() => Switcherdata.Lightheader()}
                                   className="onoffswitch2-checkbox"
                                   defaultChecked
                                 />
@@ -805,12 +802,10 @@ export const Switcher1 = () => {
                 </div>
               </div>
             </div>
-           
           </Col>
           <Col sm={12} md={12} lg={3}></Col>
         </Row>
       </div>
-     
     </Fragment>
   );
 };

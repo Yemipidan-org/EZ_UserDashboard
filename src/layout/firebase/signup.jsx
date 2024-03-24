@@ -85,7 +85,7 @@ const SignUp = () => {
     <div>
       {" "}
       <LoadingSpinner loading={loading} />
-      <div className="page bg-primary">
+      <div className="page bg-primar" style={{ background: "#000" }}>
         <div className="page-single">
           <div className="container">
             <Row>

@@ -72,7 +72,7 @@ export default function AddFund() {
   const handleHavePaid = () => {
     axiosInstance.post(
       "/add-funds",
-      {
+      {amountInUsd,
         btcamount,
         userId
       },
@@ -182,7 +182,7 @@ export default function AddFund() {
                                     <span className="text-warning">
                                       "I have paid"
                                     </span>{" "}
-                                    button to Notify merchant.
+                                    button to notify EZHedgeFunds admin.
                                   </p>
                                   <Card className="custom-card cart-details">
                                     <Card.Body>

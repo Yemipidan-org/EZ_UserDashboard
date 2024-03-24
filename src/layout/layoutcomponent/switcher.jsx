@@ -1,247 +1,240 @@
-import React,{Fragment, useEffect} from "react";
+import React, { Fragment, useEffect } from "react";
 import { Button, Row } from "react-bootstrap";
-import PerfectScrollbar from 'react-perfect-scrollbar';
-import * as Switcherdata from'../../common/switcherdata';
+import PerfectScrollbar from "react-perfect-scrollbar";
+import * as Switcherdata from "../../common/switcherdata";
 import { Link } from "react-router-dom";
 import { imagesData } from "../../common/commonimages";
 
 export default function Switcher() {
-	  useEffect(() => {
-      Switcherdata.localStorageBackUp();
-    },[]);
-    function changePrimaryColor() {
-      var userColor = document.getElementById("colorID").value;
-      localStorage.setItem("nowaPrimaryColor", userColor);
-      // to store value as opacity 0.95 we use 95
-      localStorage.setItem("nowaprimaryHoverColor", userColor + 95);
-      localStorage.setItem("nowaprimaryBorderColor", userColor);
-      localStorage.setItem("nowaprimaryTransparent", userColor + 20);
+  useEffect(() => {
+    Switcherdata.localStorageBackUp();
+  }, []);
+  function changePrimaryColor() {
+    var userColor = document.getElementById("colorID").value;
+    localStorage.setItem("nowaPrimaryColor", userColor);
+    // to store value as opacity 0.95 we use 95
+    localStorage.setItem("nowaprimaryHoverColor", userColor + 95);
+    localStorage.setItem("nowaprimaryBorderColor", userColor);
+    localStorage.setItem("nowaprimaryTransparent", userColor + 20);
 
-      const dynamicPrimaryLight = document.querySelectorAll(
-        "input.color-primary-light"
-      );
+    const dynamicPrimaryLight = document.querySelectorAll(
+      "input.color-primary-light"
+    );
 
-      Switcherdata.dynamicLightPrimaryColor(dynamicPrimaryLight, userColor);
+    Switcherdata.dynamicLightPrimaryColor(dynamicPrimaryLight, userColor);
 
-      document.getElementById("myonoffswitch1").checked = true;
-      document.getElementById("myonoffswitch3").checked = true;
-      document.getElementById("myonoffswitch6").checked = true;
+    document.getElementById("myonoffswitch1").checked = true;
+    document.getElementById("myonoffswitch3").checked = true;
+    document.getElementById("myonoffswitch6").checked = true;
 
-      // Adding
-      document.querySelector("body")?.classList.add("light-theme");
+    // Adding
+    document.querySelector("body")?.classList.add("light-theme");
 
-      // Removing
-      document.querySelector("body")?.classList.remove("dark-theme");
-      document.querySelector("body")?.classList.remove("transparent-theme");
-      document.querySelector("body")?.classList.remove("bg-img1");
-      document.querySelector("body")?.classList.remove("bg-img2");
-      document.querySelector("body")?.classList.remove("bg-img3");
-      document.querySelector("body")?.classList.remove("bg-img4");
+    // Removing
+    document.querySelector("body")?.classList.remove("dark-theme");
+    document.querySelector("body")?.classList.remove("transparent-theme");
+    document.querySelector("body")?.classList.remove("bg-img1");
+    document.querySelector("body")?.classList.remove("bg-img2");
+    document.querySelector("body")?.classList.remove("bg-img3");
+    document.querySelector("body")?.classList.remove("bg-img4");
 
-      localStorage.removeItem("nowadarkPrimaryColor");
-      localStorage.removeItem("nowatransparentPrimaryColor");
-      localStorage.removeItem("nowatransparentBgColor");
-      localStorage.removeItem("nowatransparent-bgImgPrimaryColor");
-      localStorage.removeItem("nowaBgImage");
+    localStorage.removeItem("nowadarkPrimaryColor");
+    localStorage.removeItem("nowatransparentPrimaryColor");
+    localStorage.removeItem("nowatransparentBgColor");
+    localStorage.removeItem("nowatransparent-bgImgPrimaryColor");
+    localStorage.removeItem("nowaBgImage");
 
-      Switcherdata.name();
+    Switcherdata.name();
+  }
+  function darkPrimaryColor() {
+    var userColor = document.getElementById("darkPrimaryColorID").value;
+    localStorage.setItem("nowadarkPrimaryColor", userColor);
+    localStorage.setItem("nowaprimaryHoverColor", userColor + 95);
+    localStorage.setItem("nowaprimaryBorderColor", userColor);
+    localStorage.setItem("nowaprimaryTransparent", userColor + 20);
+    const dynamicPrimaryDark = document.querySelectorAll(
+      "input.color-primary-dark"
+    );
+
+    Switcherdata.dynamicDarkPrimaryColor(dynamicPrimaryDark, userColor);
+
+    document.getElementById("myonoffswitch2").checked = true;
+    document.getElementById("myonoffswitch5").checked = true;
+    document.getElementById("myonoffswitch8").checked = true;
+    // Adding
+    document.querySelector("body")?.classList.add("dark-theme");
+
+    // Removing
+    document.querySelector("body")?.classList.remove("light-theme");
+    document.querySelector("body")?.classList.remove("transparent-theme");
+    document.querySelector("body")?.classList.remove("bg-img1");
+    document.querySelector("body")?.classList.remove("bg-img2");
+    document.querySelector("body")?.classList.remove("bg-img3");
+    document.querySelector("body")?.classList.remove("bg-img4");
+
+    localStorage.removeItem("nowaPrimaryColor");
+    localStorage.removeItem("nowaprimaryHoverColor");
+    localStorage.removeItem("nowaprimaryBorderColor");
+    localStorage.removeItem("nowaprimaryTransparent");
+    localStorage.removeItem("nowatransparentPrimaryColor");
+    localStorage.removeItem("nowatransparentBgColor");
+    localStorage.removeItem("nowatransparent-bgImgPrimaryColor");
+    localStorage.removeItem("nowaBgImage");
+
+    Switcherdata.name();
+  }
+  function transparentPrimaryColor() {
+    var userColor = document.getElementById("transparentPrimaryColorID").value;
+
+    localStorage.setItem("nowatransparentPrimaryColor", userColor);
+    localStorage.setItem("nowaprimaryHoverColor", userColor + 95);
+    localStorage.setItem("nowaprimaryBorderColor", userColor);
+    localStorage.setItem("nowaprimaryTransparent", userColor + 20);
+    const PrimaryTransparent = document.querySelectorAll(
+      "input.color-primary-transparent"
+    );
+
+    Switcherdata.dynamicTransparentPrimaryColor(PrimaryTransparent, userColor);
+
+    document.getElementById("myonoffswitchTransparent").checked = true;
+
+    // Adding
+    document.querySelector("body")?.classList.add("transparent-theme");
+
+    // Removing
+    document.querySelector("body")?.classList.remove("light-theme");
+    document.querySelector("body")?.classList.remove("dark-theme");
+    document.querySelector("body")?.classList.remove("bg-img1");
+    document.querySelector("body")?.classList.remove("bg-img2");
+    document.querySelector("body")?.classList.remove("bg-img3");
+    document.querySelector("body")?.classList.remove("bg-img4");
+
+    localStorage.removeItem("nowaPrimaryColor");
+    localStorage.removeItem("nowaprimaryHoverColor");
+    localStorage.removeItem("nowaprimaryBorderColor");
+    localStorage.removeItem("nowaprimaryTransparent");
+    localStorage.removeItem("nowadarkPrimaryColor");
+    localStorage.removeItem("nowatransparent-bgImgPrimaryColor");
+    localStorage.removeItem("nowaBgImage");
+
+    Switcherdata.name();
+  }
+  function BgTransparentBackground() {
+    var userColor = document.getElementById("transparentBgColorID").value;
+
+    localStorage.setItem("nowatransparentBgColor", userColor);
+
+    const dynamicBackgroundColor = document.querySelectorAll(
+      "input.color-bg-transparent"
+    );
+
+    Switcherdata.dynamicBgTransparentBackground(
+      dynamicBackgroundColor,
+      userColor
+    );
+
+    document.getElementById("myonoffswitchTransparent").checked = true;
+
+    // Adding
+    document.querySelector("body")?.classList.add("transparent-theme");
+
+    // Removing
+    document.querySelector("body")?.classList.remove("light-theme");
+    document.querySelector("body")?.classList.remove("dark-theme");
+    document.querySelector("body")?.classList.remove("bg-img1");
+    document.querySelector("body")?.classList.remove("bg-img2");
+    document.querySelector("body")?.classList.remove("bg-img3");
+    document.querySelector("body")?.classList.remove("bg-img4");
+    document.querySelector("body")?.classList.remove("light-header");
+    document.querySelector("body")?.classList.remove("color-header");
+    document.querySelector("body")?.classList.remove("dark-header");
+    document.querySelector("body")?.classList.remove("gradient-header");
+    document.querySelector("body")?.classList.remove("light-menu");
+    document.querySelector("body")?.classList.remove("color-menu");
+    document.querySelector("body")?.classList.remove("dark-menu");
+    document.querySelector("body")?.classList.remove("gradient-menu");
+    localStorage.removeItem("nowaPrimaryColor");
+    localStorage.removeItem("nowaprimaryHoverColor");
+    localStorage.removeItem("nowaprimaryBorderColor");
+    localStorage.removeItem("nowaprimaryTransparent");
+    localStorage.removeItem("nowadarkPrimaryColor");
+    localStorage.removeItem("nowatransparent-bgImgPrimaryColor");
+    localStorage.removeItem("nowaBgImage");
+
+    Switcherdata.name();
+  }
+  function BgImgTransparentPrimaryColor() {
+    var userColor = document.getElementById(
+      "transparentBgImgPrimaryColorID"
+    ).value;
+
+    localStorage.setItem("nowatransparent-bgImgPrimaryColor", userColor);
+
+    const dynamicPrimaryImgTransparent = document.querySelectorAll(
+      "input.color-primary-transparent"
+    );
+
+    Switcherdata.dynamicBgImgTransparentPrimaryColor(
+      dynamicPrimaryImgTransparent,
+      userColor
+    );
+    document.getElementById("myonoffswitchTransparent").checked = true;
+
+    // Adding
+    document.querySelector("body")?.classList.add("transparent-theme");
+
+    // Removing
+    document.querySelector("body")?.classList.remove("light-theme");
+    document.querySelector("body")?.classList.remove("dark-theme");
+    document.querySelector("body")?.classList.remove("light-header");
+    document.querySelector("body")?.classList.remove("color-header");
+    document.querySelector("body")?.classList.remove("dark-header");
+    document.querySelector("body")?.classList.remove("gradient-header");
+    document.querySelector("body")?.classList.remove("light-menu");
+    document.querySelector("body")?.classList.remove("color-menu");
+    document.querySelector("body")?.classList.remove("dark-menu");
+    document.querySelector("body")?.classList.remove("gradient-menu");
+    localStorage.removeItem("nowaPrimaryColor");
+    localStorage.removeItem("nowaprimaryHoverColor");
+    localStorage.removeItem("nowaprimaryBorderColor");
+    localStorage.removeItem("nowaprimaryTransparent");
+    localStorage.removeItem("nowadarkPrimaryColor");
+    localStorage.removeItem("nowatransparentPrimaryColor");
+    localStorage.removeItem("nowatransparentBgColor");
+
+    document.querySelector("html").style.removeProperty("--transparent-body");
+
+    if (
+      document.querySelector("body")?.classList.contains("bg-img1") === false &&
+      document.querySelector("body")?.classList.contains("bg-img2") === false &&
+      document.querySelector("body")?.classList.contains("bg-img3") === false &&
+      document.querySelector("body")?.classList.contains("bg-img4") === false
+    ) {
+      document.querySelector("body")?.classList.add("bg-img1");
+      localStorage.setItem("nowaBgImage", "bg-img1");
     }
-    function darkPrimaryColor() {
-      var userColor = document.getElementById("darkPrimaryColorID").value;
-      localStorage.setItem("nowadarkPrimaryColor", userColor);
-      localStorage.setItem("nowaprimaryHoverColor", userColor + 95);
-      localStorage.setItem("nowaprimaryBorderColor", userColor);
-      localStorage.setItem("nowaprimaryTransparent", userColor + 20);
-      const dynamicPrimaryDark = document.querySelectorAll(
-        "input.color-primary-dark"
-      );
-
-      Switcherdata.dynamicDarkPrimaryColor(dynamicPrimaryDark, userColor);
-
-      document.getElementById("myonoffswitch2").checked = true;
-      document.getElementById("myonoffswitch5").checked = true;
-      document.getElementById("myonoffswitch8").checked = true;
-      // Adding
-      document.querySelector("body")?.classList.add("dark-theme");
-
-      // Removing
-      document.querySelector("body")?.classList.remove("light-theme");
-      document.querySelector("body")?.classList.remove("transparent-theme");
-      document.querySelector("body")?.classList.remove("bg-img1");
-      document.querySelector("body")?.classList.remove("bg-img2");
-      document.querySelector("body")?.classList.remove("bg-img3");
-      document.querySelector("body")?.classList.remove("bg-img4");
-
-      localStorage.removeItem("nowaPrimaryColor");
-      localStorage.removeItem("nowaprimaryHoverColor");
-      localStorage.removeItem("nowaprimaryBorderColor");
-      localStorage.removeItem("nowaprimaryTransparent");
-      localStorage.removeItem("nowatransparentPrimaryColor");
-      localStorage.removeItem("nowatransparentBgColor");
-      localStorage.removeItem("nowatransparent-bgImgPrimaryColor");
-      localStorage.removeItem("nowaBgImage");
-
-      Switcherdata.name();
-    }
-    function transparentPrimaryColor() {
-      var userColor = document.getElementById(
-        "transparentPrimaryColorID"
-      ).value;
-
-      localStorage.setItem("nowatransparentPrimaryColor", userColor);
-      localStorage.setItem("nowaprimaryHoverColor", userColor + 95);
-      localStorage.setItem("nowaprimaryBorderColor", userColor);
-      localStorage.setItem("nowaprimaryTransparent", userColor + 20);
-      const PrimaryTransparent = document.querySelectorAll(
-        "input.color-primary-transparent"
-      );
-
-      Switcherdata.dynamicTransparentPrimaryColor(
-        PrimaryTransparent,
-        userColor
-      );
-
-      document.getElementById("myonoffswitchTransparent").checked = true;
-
-      // Adding
-      document.querySelector("body")?.classList.add("transparent-theme");
-
-      // Removing
-      document.querySelector("body")?.classList.remove("light-theme");
-      document.querySelector("body")?.classList.remove("dark-theme");
-      document.querySelector("body")?.classList.remove("bg-img1");
-      document.querySelector("body")?.classList.remove("bg-img2");
-      document.querySelector("body")?.classList.remove("bg-img3");
-      document.querySelector("body")?.classList.remove("bg-img4");
-
-      localStorage.removeItem("nowaPrimaryColor");
-      localStorage.removeItem("nowaprimaryHoverColor");
-      localStorage.removeItem("nowaprimaryBorderColor");
-      localStorage.removeItem("nowaprimaryTransparent");
-      localStorage.removeItem("nowadarkPrimaryColor");
-      localStorage.removeItem("nowatransparent-bgImgPrimaryColor");
-      localStorage.removeItem("nowaBgImage");
-
-      Switcherdata.name();
-    }
-    function BgTransparentBackground() {
-      var userColor = document.getElementById("transparentBgColorID").value;
-
-      localStorage.setItem("nowatransparentBgColor", userColor);
-
-      const dynamicBackgroundColor = document.querySelectorAll(
-        "input.color-bg-transparent"
-      );
-
-      Switcherdata.dynamicBgTransparentBackground(
-        dynamicBackgroundColor,
-        userColor
-      );
-
-      document.getElementById("myonoffswitchTransparent").checked = true;
-
-      // Adding
-      document.querySelector("body")?.classList.add("transparent-theme");
-
-      // Removing
-      document.querySelector("body")?.classList.remove("light-theme");
-      document.querySelector("body")?.classList.remove("dark-theme");
-      document.querySelector("body")?.classList.remove("bg-img1");
-      document.querySelector("body")?.classList.remove("bg-img2");
-      document.querySelector("body")?.classList.remove("bg-img3");
-      document.querySelector("body")?.classList.remove("bg-img4");
-      document.querySelector("body")?.classList.remove("light-header");
-      document.querySelector("body")?.classList.remove("color-header");
-      document.querySelector("body")?.classList.remove("dark-header");
-      document.querySelector("body")?.classList.remove("gradient-header");
-      document.querySelector("body")?.classList.remove("light-menu");
-      document.querySelector("body")?.classList.remove("color-menu");
-      document.querySelector("body")?.classList.remove("dark-menu");
-      document.querySelector("body")?.classList.remove("gradient-menu");
-      localStorage.removeItem("nowaPrimaryColor");
-      localStorage.removeItem("nowaprimaryHoverColor");
-      localStorage.removeItem("nowaprimaryBorderColor");
-      localStorage.removeItem("nowaprimaryTransparent");
-      localStorage.removeItem("nowadarkPrimaryColor");
-      localStorage.removeItem("nowatransparent-bgImgPrimaryColor");
-      localStorage.removeItem("nowaBgImage");
-
-      Switcherdata.name();
-    }
-    function BgImgTransparentPrimaryColor() {
-      
-      var userColor = document.getElementById(
-        "transparentBgImgPrimaryColorID"
-      ).value;
-
-      localStorage.setItem("nowatransparent-bgImgPrimaryColor", userColor);
-
-      const dynamicPrimaryImgTransparent = document.querySelectorAll(
-        "input.color-primary-transparent"
-      );
-
-      Switcherdata.dynamicBgImgTransparentPrimaryColor(
-        dynamicPrimaryImgTransparent,
-        userColor
-      );
-      document.getElementById("myonoffswitchTransparent").checked = true;
-
-      // Adding
-      document.querySelector("body")?.classList.add("transparent-theme");
-
-      // Removing
-      document.querySelector("body")?.classList.remove("light-theme");
-      document.querySelector("body")?.classList.remove("dark-theme");
-      document.querySelector("body")?.classList.remove("light-header");
-      document.querySelector("body")?.classList.remove("color-header");
-      document.querySelector("body")?.classList.remove("dark-header");
-      document.querySelector("body")?.classList.remove("gradient-header");
-      document.querySelector("body")?.classList.remove("light-menu");
-      document.querySelector("body")?.classList.remove("color-menu");
-      document.querySelector("body")?.classList.remove("dark-menu");
-      document.querySelector("body")?.classList.remove("gradient-menu");
-      localStorage.removeItem("nowaPrimaryColor");
-      localStorage.removeItem("nowaprimaryHoverColor");
-      localStorage.removeItem("nowaprimaryBorderColor");
-      localStorage.removeItem("nowaprimaryTransparent");
-      localStorage.removeItem("nowadarkPrimaryColor");
-      localStorage.removeItem("nowatransparentPrimaryColor");
-      localStorage.removeItem("nowatransparentBgColor");
-
-      document.querySelector("html").style.removeProperty("--transparent-body");
-
-      if (
-        document.querySelector("body")?.classList.contains("bg-img1") ===
-          false &&
-        document.querySelector("body")?.classList.contains("bg-img2") ===
-          false &&
-        document.querySelector("body")?.classList.contains("bg-img3") ===
-          false &&
-        document.querySelector("body")?.classList.contains("bg-img4") === false
-      ) {
-        document.querySelector("body")?.classList.add("bg-img1");
-        localStorage.setItem("nowaBgImage", "bg-img1");
-      }
-      Switcherdata.name();
-      
-    }
-    const Switcherclose = () => {
-      document.querySelector(".demo_changer")?.classList.remove("active");
-      document.querySelector(".switcher-backdrop")?.classList.remove("d-block");
-      document.querySelector(".switcher-backdrop")?.classList.add("d-none");
-      document.querySelector(".demo_changer").style.right = "-270px";
+    Switcherdata.name();
+  }
+  const Switcherclose = () => {
+    document.querySelector(".demo_changer")?.classList.remove("active");
+    document.querySelector(".switcher-backdrop")?.classList.remove("d-block");
+    document.querySelector(".switcher-backdrop")?.classList.add("d-none");
+    document.querySelector(".demo_changer").style.right = "-270px";
   };
   return (
     <Fragment>
-       <div className="switcher-backdrop d-none" onClick={() => {
-                      Switcherclose();
-                    }}></div>
+      <div
+        className="switcher-backdrop d-none"
+        onClick={() => {
+          Switcherclose();
+        }}
+      ></div>
       <div className="switcher-wrapper">
         <div className="demo_changer">
           <div className="form_holder sidebar-right1">
-        
-            <PerfectScrollbar className="sidebarright2" 
-            options={{ suppressScrollX: true, useBothWheelAxes: false }}
+            <PerfectScrollbar
+              className="sidebarright2"
+              options={{ suppressScrollX: true, useBothWheelAxes: false }}
             >
               <Row>
                 <div className="predefined_styles">
@@ -367,7 +360,7 @@ export default function Switcher() {
                           <div className="">
                             <input
                               className="wd-25 ht-25 input-color-picker color-primary-light"
-                              defaultValue="#38cab3"
+                              defaultValue="#38CAB3"
                               id="colorID"
                               onInput={(e) => changePrimaryColor(e)}
                               type="color"
@@ -407,7 +400,7 @@ export default function Switcher() {
                           <div className="">
                             <input
                               className="wd-25 ht-25 input-dark-color-picker color-primary-dark"
-                              defaultValue="#38cab3"
+                              defaultValue="#38CAB3"
                               id="darkPrimaryColorID"
                               onInput={(e) => darkPrimaryColor(e)}
                               type="color"
@@ -448,7 +441,7 @@ export default function Switcher() {
                           <div className="">
                             <input
                               className="wd-30 ht-30 input-transparent-color-picker color-primary-transparent"
-                              defaultValue="#38cab3"
+                              defaultValue="#38CAB3"
                               id="transparentPrimaryColorID"
                               onInput={() => transparentPrimaryColor()}
                               type="color"
@@ -469,7 +462,7 @@ export default function Switcher() {
                           <div className="">
                             <input
                               className="wd-30 ht-30 input-transparent-color-picker color-bg-transparent"
-                              defaultValue="#38cab3"
+                              defaultValue="#38CAB3"
                               id="transparentBgColorID"
                               onInput={(e) => BgTransparentBackground(e)}
                               type="color"
@@ -492,7 +485,7 @@ export default function Switcher() {
                           <div className="">
                             <input
                               className="wd-30 ht-30 input-transparent-color-picker color-primary-transparent"
-                              defaultValue="#38cab3"
+                              defaultValue="#38CAB3"
                               id="transparentBgImgPrimaryColorID"
                               onInput={() => BgImgTransparentPrimaryColor()}
                               type="color"
@@ -513,7 +506,7 @@ export default function Switcher() {
                             to="#"
                           >
                             <img
-                              src={imagesData('bgimg1')}
+                              src={imagesData("bgimg1")}
                               id="bgimage1"
                               alt="switch-img"
                             />
@@ -524,7 +517,7 @@ export default function Switcher() {
                             to="#"
                           >
                             <img
-                              src={imagesData('bgimg2')}
+                              src={imagesData("bgimg2")}
                               id="bgimage2"
                               alt="switch-img"
                             />
@@ -535,7 +528,7 @@ export default function Switcher() {
                             to="#"
                           >
                             <img
-                              src={imagesData('bgimg3')}
+                              src={imagesData("bgimg3")}
                               id="bgimage3"
                               alt="switch-img"
                             />
@@ -546,7 +539,7 @@ export default function Switcher() {
                             to="#"
                           >
                             <img
-                              src={imagesData('bgimg4')}
+                              src={imagesData("bgimg4")}
                               id="bgimage4"
                               alt="switch-img"
                             />
@@ -800,7 +793,6 @@ export default function Switcher() {
                   </div>
                 </div>
               </Row>
-           
             </PerfectScrollbar>
           </div>
         </div>
