@@ -76,8 +76,7 @@ export default function Wallet() {
     return () => clearInterval(pollingInterval);
   }, []);
 
-  console.log(investments[0]);
-
+  console.log(allInvestments);
 
   return (
     <Fragment>
@@ -566,19 +565,26 @@ export default function Wallet() {
                                             <div className="mt-0">
                                               <h5 className="mb-1 tx-13 font-weight-sembold text-dark">
                                                 <span className="me-3">
-                                                  Investing
+                                                  {investments?.investment_id}
                                                 </span>
                                               </h5>
                                               <p className="mb-0 tx-12 text-muted">
-                                                24-08-2021
+                                                {investments?.formatted_date}
                                               </p>
                                             </div>
                                             <span className="ms-auto wd-25p tx-12">
-                                              <span className="text-warning tx-11 text-end d-block">
-                                                ongoing
-                                              </span>
+                                              {investments?.status ===
+                                              "active" ? (
+                                                <span className="text-danger tx-11 text-end d-block">
+                                                  ongoing
+                                                </span>
+                                              ) : (
+                                                <span className="text-success tx-11 text-end d-block">
+                                                  {investments?.status}
+                                                </span>
+                                              )}
                                               <span className="float-end text-success font-weight-semibold">
-                                                $100
+                                                {investments?.amount_in_return}
                                               </span>
                                             </span>
                                           </div>
@@ -596,7 +602,9 @@ export default function Wallet() {
                             className="panel-body tabs-menu-body main-content-body-right "
                             id="tab6"
                           >
-                            <ListGroup className="list-lg-group list-group-flush">
+                            <div className="text-center">No Withdrawals</div>
+
+                            {/* <ListGroup className="list-lg-group list-group-flush">
                               <Link to="#" className="border-0">
                                 <ListGroup.Item className="list-group-item-action border-0">
                                   <div className="media mt-0 flex-wrap">
@@ -628,69 +636,7 @@ export default function Wallet() {
                                   </div>
                                 </ListGroup.Item>
                               </Link>
-                              <Link to="#" className="border-0">
-                                <ListGroup.Item className="list-group-item-action border-0">
-                                  <div className="media mt-0 flex-wrap">
-                                    <span className="me-3 bg-secondary-transparent text-secondary transaction-icon">
-                                      <i className="fe fe-chevrons-up"></i>
-                                    </span>
-                                    <div className="media-body">
-                                      <div className="d-flex align-items-center">
-                                        <div className="mt-0">
-                                          <h5 className="mb-1 tx-13 font-weight-sembold text-dark">
-                                            <span className="me-3">
-                                              Deposit
-                                            </span>
-                                          </h5>
-                                          <p className="mb-0 tx-12 text-muted">
-                                            24-08-2021
-                                          </p>
-                                        </div>
-                                        <span className="ms-auto wd-25p tx-12">
-                                          <span className="text-danger tx-11 text-end d-block">
-                                            Pending
-                                          </span>
-                                          <span className="float-end text-success font-weight-semibold">
-                                            $256,347
-                                          </span>
-                                        </span>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </ListGroup.Item>
-                              </Link>
-                              <Link to="#" className="border-0">
-                                <ListGroup.Item className="list-group-item-action border-0">
-                                  <div className="media mt-0 flex-wrap">
-                                    <span className="me-3 bg-secondary-transparent text-secondary transaction-icon">
-                                      <i className="fe fe-chevrons-up"></i>
-                                    </span>
-                                    <div className="media-body">
-                                      <div className="d-flex align-items-center">
-                                        <div className="mt-0">
-                                          <h5 className="mb-1 tx-13 font-weight-sembold text-dark">
-                                            <span className="me-3">
-                                              Deposit
-                                            </span>
-                                          </h5>
-                                          <p className="mb-0 tx-12 text-muted">
-                                            24-08-2021
-                                          </p>
-                                        </div>
-                                        <span className="ms-auto wd-25p tx-12">
-                                          <span className="text-danger tx-11 text-end d-block">
-                                            Pending
-                                          </span>
-                                          <span className="float-end text-success font-weight-semibold">
-                                            $256,347
-                                          </span>
-                                        </span>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </ListGroup.Item>
-                              </Link>
-                            </ListGroup>
+                            </ListGroup> */}
                           </div>
                         </Tab>
                       </Tabs>
